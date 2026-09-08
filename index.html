@@ -3,747 +3,709 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gadde Bhanu Prakash | Data Scientist & AI Engineer Portfolio</title>
-    <meta name="description" content="Professional portfolio of Gadde Bhanu Prakash, Data Scientist transitioning into an AI Engineer. Specializing in Time-Series Forecasting, Operations Research, Generative AI Agents, and Deep Learning.">
-    <meta name="keywords" content="Data Scientist, AI Engineer, Machine Learning, Deep Learning, Generative AI, LangChain, LangGraph, Time-Series Forecasting, Operations Research, Portfolio">
-    <meta name="author" content="Gadde Bhanu Prakash">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Gadde Bhanu Prakash | Data Scientist & AI Engineer">
-    <meta property="og:description" content="Portfolio of Gadde Bhanu Prakash. Highlighting SynergyOS supply chain twin, Churn predictor, Deep Learning research publications, and AI agents.">
-    <meta property="og:image" content="profile.jpg">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Gadde Bhanu Prakash | Data Scientist & AI Engineer">
-    <meta property="twitter:description" content="Portfolio of Gadde Bhanu Prakash. Highlighting SynergyOS supply chain twin, Churn predictor, Deep Learning research publications, and AI agents.">
-    <meta property="twitter:image" content="profile.jpg">
-
-    <!-- Google Fonts -->
+    <title>Gadde Bhanu Prakash | AI Engineer & Data Scientist Portfolio</title>
+    <meta name="description" content="Portfolio of Gadde Bhanu Prakash — AI Engineer & Data Scientist specializing in Agentic RAG systems, time-series forecasting, and operations research.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Custom CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    
-    <!-- Lucide Icons CDN -->
-    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-    <!-- Background Elements -->
-    <div class="blob-grid">
+
+    <!-- Background Effects -->
+    <div class="blob-grid" aria-hidden="true">
         <div class="blob blob-purple"></div>
         <div class="blob blob-cyan"></div>
         <div class="blob blob-blue"></div>
     </div>
-    <div class="grid-overlay"></div>
+    <div class="grid-overlay" aria-hidden="true"></div>
 
-    <!-- Header Navigation -->
-    <header class="site-header" id="site-header">
+    <!-- Custom Cursor -->
+    <div id="cursor-dot" class="custom-cursor-dot"></div>
+    <div id="cursor-ring" class="custom-cursor-ring"></div>
+
+    <!-- ================================================================
+         HEADER
+    ================================================================= -->
+    <header id="site-header" class="site-header">
         <div class="container header-container">
-            <a href="#hero" class="logo-link" id="logo-link">
+            <a href="#hero" class="logo-link">
                 <span class="logo-text">Bhanu<span class="text-gradient">.AI</span></span>
             </a>
-            
-            <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
+            <nav id="main-nav" class="main-nav" aria-label="Primary navigation">
                 <ul class="nav-list">
-                    <li><a href="#about" class="nav-link" id="nav-link-about">About</a></li>
-                    <li><a href="#skills" class="nav-link" id="nav-link-skills">Skills</a></li>
-                    <li><a href="#projects" class="nav-link" id="nav-link-projects">Projects</a></li>
-                    <li><a href="#research" class="nav-link" id="nav-link-research">Research</a></li>
-                    <li><a href="#certifications" class="nav-link" id="nav-link-certs">Certifications</a></li>
-                    <li><a href="#chatbot" class="nav-link nav-link-highlight" id="nav-link-chatbot"><i data-lucide="bot" class="nav-icon-bot"></i> Bhanu AI</a></li>
-                    <li><a href="#contact" class="nav-link" id="nav-link-contact">Contact</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#research" class="nav-link">Research</a></li>
+                    <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                    <li><a href="#chatbot" class="nav-link nav-link-highlight"><i data-lucide="bot" class="nav-icon-bot"></i> Bhanu AI</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
-
             <div class="header-actions">
-                <a href="Gadde_BhanuPrakash_Resume.pdf" class="btn btn-outline btn-sm" id="header-resume-btn" download>
+                <a href="Gadde_Bhanu_Prakash_Resume.pdf" class="btn btn-outline btn-sm" download>
                     <i data-lucide="download"></i> Resume
                 </a>
-                <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle Menu" aria-expanded="false">
+                <button id="mobile-nav-toggle" class="mobile-nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation">
                     <span class="hamburger"></span>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Hero Section -->
-        <section class="hero-section" id="hero">
-            <div class="container hero-container">
-                <div class="hero-content">
-                    <div class="badge-container">
-                        <span class="hero-badge"><span class="badge-dot"></span> Available for Opportunities</span>
-                    </div>
-                    <h1 class="hero-title">
-                        Gadde Bhanu Prakash
-                    </h1>
-                    <h2 class="hero-subtitle">
-                        Data Scientist & <span class="text-gradient">AI Engineer</span>
-                    </h2>
-                    <p class="hero-description">
-                        Transforming complex data into intelligent, actionable systems. Specializing in Time-Series Forecasting, Operations Research, and Generative AI Agents. Bridging the gap between predictive science and autonomous AI systems.
-                    </p>
-                    <div class="hero-cta-group">
-                        <a href="#projects" class="btn btn-primary" id="hero-view-work">
-                            View My Work <i data-lucide="arrow-right"></i>
-                        </a>
-                        <a href="Gadde_BhanuPrakash_Resume.pdf" class="btn btn-secondary" id="hero-download-resume" download>
-                            Download Resume <i data-lucide="download"></i>
-                        </a>
-                    </div>
-                    <div class="hero-socials">
-                        <span class="socials-label">Connect:</span>
-                        <a href="https://github.com/GaddeBhanu9" target="_blank" rel="noopener" class="social-icon-link" id="hero-github-link" aria-label="GitHub">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-                        </a>
-                        <a href="https://www.linkedin.com/in/gadde-bhanu-prakash-26aa74389" target="_blank" rel="noopener" class="social-icon-link" id="hero-linkedin-link" aria-label="LinkedIn">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                        </a>
-                        <a href="mailto:gaddebhanu111@gmail.com" class="social-icon-link" id="hero-email-link" aria-label="Email">
-                            <i data-lucide="mail"></i>
-                        </a>
-                        <a href="tel:+917396652709" class="social-icon-link" id="hero-phone-link" aria-label="Phone">
-                            <i data-lucide="phone"></i>
-                        </a>
-                    </div>
+    <!-- ================================================================
+         HERO
+    ================================================================= -->
+    <section id="hero" class="hero-section">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-badge"><span class="badge-dot"></span> Available for Opportunities</div>
+                <h1 class="hero-title">Gadde Bhanu Prakash</h1>
+                <h2 class="hero-subtitle text-gradient">AI Engineer &amp; Data Scientist</h2>
+                <p class="hero-description">
+                    I build systems that don't just predict the future — they act on it. From self-correcting
+                    multi-agent RAG pipelines (<strong>OmniRAG</strong>) and autonomous data observability
+                    (<strong>VIGIL</strong>) to cognitive supply chain twins, I bridge predictive science and autonomous AI.
+                </p>
+                <div class="hero-cta-group">
+                    <a href="#projects" class="btn btn-primary"><i data-lucide="arrow-right"></i> View My Work</a>
+                    <a href="Gadde_Bhanu_Prakash_Resume.pdf" class="btn btn-secondary" download><i data-lucide="download"></i> Download Resume</a>
                 </div>
-
-                <div class="hero-visual">
-                    <canvas id="hero-3d-canvas" class="hero-3d-canvas"></canvas>
-                    <div class="profile-card-wrapper">
-                        <div class="glow-ring"></div>
-                        <div class="profile-card">
-                            <div class="profile-img-container">
-                                <img src="profile.jpg" alt="Gadde Bhanu Prakash Professional Headshot" class="profile-img" id="profile-img">
+                <div class="hero-socials">
+                    <span class="socials-label">Connect:</span>
+                    <a href="https://github.com/GaddeBhanu9" target="_blank" class="social-icon-link" aria-label="GitHub"><i data-lucide="github"></i></a>
+                    <a href="https://www.linkedin.com/in/gadde-bhanu-prakash-26aa74389" target="_blank" class="social-icon-link" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                    <a href="mailto:gaddebhanu333@gmail.com" class="social-icon-link" aria-label="Email"><i data-lucide="mail"></i></a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <canvas id="hero-3d-canvas" class="hero-3d-canvas"></canvas>
+                <div class="profile-card-wrapper">
+                    <div class="glow-ring"></div>
+                    <div class="profile-card">
+                        <div class="profile-img-container">
+                            <!-- TODO: confirm your photo filename -->
+                            <img src="profile.jpg" alt="Gadde Bhanu Prakash" class="profile-img" loading="lazy">
+                        </div>
+                        <div class="profile-card-footer">
+                            <div>
+                                <span class="profile-name">G. Bhanu Prakash</span>
+                                <span class="profile-role">AI Engineer &amp; Developer</span>
                             </div>
-                            <div class="profile-card-footer">
-                                <div class="profile-info">
-                                    <span class="profile-name">G. Bhanu Prakash</span>
-                                    <span class="profile-role">B.Tech AI Student & Developer</span>
-                                </div>
-                                <div class="profile-status">
-                                    <span class="status-indicator-green"></span> Live
-                                </div>
-                            </div>
+                            <div class="profile-status"><span class="status-indicator-green"></span> Live</div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <a href="#about" class="scroll-down-indicator" aria-label="Scroll to About Section">
-                <span class="mouse">
-                    <span class="wheel"></span>
-                </span>
-                <span class="scroll-text">Scroll Down</span>
-            </a>
-        </section>
+        </div>
+        <a href="#about" class="scroll-down-indicator">
+            <div class="mouse"><div class="wheel"></div></div>
+            <span class="scroll-text">Scroll Down</span>
+        </a>
+    </section>
 
-        <!-- About & Career Transition Section -->
-        <section class="about-section section-padding" id="about">
-            <div class="container">
-                <div class="section-header text-center">
-                    <h2 class="section-title">About Me</h2>
-                    <div class="section-divider"></div>
-                    <p class="section-subtitle">The convergence of Classical Analytics & Modern Intelligent Systems</p>
-                </div>
-
-                <div class="about-grid">
-                    <div class="about-text-card glass-card">
-                        <h3 class="card-title"><i data-lucide="trending-up" class="title-icon"></i> My AI Evolution</h3>
+    <!-- ================================================================
+         ABOUT
+    ================================================================= -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <span class="section-eyebrow">01 · About Me</span>
+                <h2 class="section-title">From Prediction to <span class="text-gradient">Autonomous Action</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">The convergence of classical analytics &amp; modern intelligent systems</p>
+            </div>
+            <div class="about-grid">
+                <div class="glass-card about-text-card reveal">
+                    <div>
+                        <h3 class="card-title"><i data-lucide="sparkles" class="title-icon"></i> My AI Evolution</h3>
                         <p class="about-para">
-                            Currently pursuing a <strong>B.Tech in CSE (Artificial Intelligence)</strong>, I have spent the last few years mastering data modeling, statistical forecasting, and operations research. However, the rise of Foundation Models and Cognitive Agents has inspired me to expand my horizons into **AI Engineering**.
+                            Pursuing a <strong>B.Tech in CSE (Artificial Intelligence)</strong> alongside an
+                            <strong>Advanced Certification in Data Science with AI from IIT Jammu</strong>, I have spent
+                            the last few years mastering data modeling, statistical forecasting, and operations research.
+                            The rise of Foundation Models and Cognitive Agents pushed me to expand into <strong>AI Engineering</strong>.
                         </p>
                         <p class="about-para">
-                            I specialize in designing solutions that do not just predict the future, but act on it. By combining traditional forecasting algorithms (like LightGBM and Prophet) with optimization engines (Google OR-Tools) and Orchestrated GenAI Agent frameworks (LangGraph, LangChain), I construct end-to-end cognitive engines that automate complex business decision-making.
+                            I specialize in systems that don't just predict — they <strong>act</strong>. By combining forecasting
+                            models (LightGBM, Prophet) with optimization engines (Google OR-Tools) and orchestrated agent
+                            frameworks (LangGraph, LangChain), I build end-to-end cognitive engines that automate complex
+                            business decision-making.
                         </p>
-                        <div class="about-highlights">
-                            <div class="highlight-item">
-                                <span class="highlight-num">80%+</span>
-                                <span class="highlight-txt">Multi-Agent SRE Reliability Boost</span>
-                            </div>
-                            <div class="highlight-item">
-                                <span class="highlight-num">15%</span>
-                                <span class="highlight-txt">Supply Chain Productivity Gain</span>
-                            </div>
-                            <div class="highlight-item">
-                                <span class="highlight-num">0.89</span>
-                                <span class="highlight-txt">Churn Predictor AUC-ROC</span>
-                            </div>
+                    </div>
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <span class="highlight-num" data-count="90" data-suffix="%">90%</span>
+                            <span class="highlight-txt">Hallucination Reduction (OmniRAG)</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-num" data-count="40" data-suffix="%">40%</span>
+                            <span class="highlight-txt">Retrieval Precision Gain</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-num" data-count="0.89" data-decimals="2">0.89</span>
+                            <span class="highlight-txt">Churn Predictor AUC-ROC</span>
                         </div>
                     </div>
-
-                    <div class="about-meta-grid">
-                        <div class="education-card glass-card">
-                            <h3 class="card-title"><i data-lucide="graduation-cap" class="title-icon"></i> Education</h3>
-                            <div class="edu-timeline">
-                                <div class="edu-item">
-                                    <div class="edu-meta">
-                                        <span class="edu-duration">Nov 2022 – May 2026</span>
-                                        <span class="edu-score">CGPA: 8.0/10.0</span>
-                                    </div>
-                                    <h4 class="edu-degree">B.Tech in Computer Science & Engineering (Artificial Intelligence)</h4>
-                                    <p class="edu-school">PBR Visvodaya Institute of Technology and Science</p>
-                                </div>
-                            </div>
+                </div>
+                <div class="about-meta-grid">
+                    <div class="glass-card education-card reveal">
+                        <h3 class="card-title"><i data-lucide="graduation-cap" class="title-icon"></i> Education</h3>
+                        <div class="edu-entry">
+                            <div class="edu-meta"><span>B.Tech CSE (AI)</span><span>2022 – 2026</span></div>
+                            <p class="edu-degree">PBR Visvodaya Institute of Technology and Science</p>
+                            <p class="edu-school">CGPA: 8.0 / 10.0</p>
                         </div>
-
-                        <div class="focus-card glass-card">
-                            <h3 class="card-title"><i data-lucide="activity" class="title-icon"></i> Core Focus Areas</h3>
-                            <div class="focus-grid">
-                                <div class="focus-item">
-                                    <i data-lucide="bar-chart-3" class="focus-icon"></i>
-                                    <span>Time-Series Forecasting</span>
-                                </div>
-                                <div class="focus-item">
-                                    <i data-lucide="cpu" class="focus-icon"></i>
-                                    <span>Operations Research</span>
-                                </div>
-                                <div class="focus-item">
-                                    <i data-lucide="bot" class="focus-icon"></i>
-                                    <span>Multi-Agent Workflows</span>
-                                </div>
-                                <div class="focus-item">
-                                    <i data-lucide="zap" class="focus-icon"></i>
-                                    <span>FastAPI & Edge AI</span>
-                                </div>
-                            </div>
+                        <div class="edu-entry">
+                            <div class="edu-meta"><span>Adv. Cert — DS with AI</span><span>2026 – Present</span></div>
+                            <p class="edu-degree">IIT Jammu</p>
+                            <p class="edu-school">Advanced certification in applied Data Science &amp; AI</p>
+                        </div>
+                    </div>
+                    <div class="glass-card focus-card reveal">
+                        <h3 class="card-title"><i data-lucide="target" class="title-icon"></i> Core Focus Areas</h3>
+                        <div class="focus-grid">
+                            <div class="focus-item"><i data-lucide="workflow" class="focus-icon"></i> Agentic RAG Systems</div>
+                            <div class="focus-item"><i data-lucide="trending-up" class="focus-icon"></i> Time-Series Forecasting</div>
+                            <div class="focus-item"><i data-lucide="git-merge" class="focus-icon"></i> Operations Research</div>
+                            <div class="focus-item"><i data-lucide="shield-check" class="focus-icon"></i> Data Observability</div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Skills Matrix Section -->
-        <section class="skills-section section-padding" id="skills">
-            <div class="container">
-                <div class="section-header text-center">
-                    <h2 class="section-title">Technical Skills</h2>
-                    <div class="section-divider"></div>
-                    <p class="section-subtitle">My technology stack for building intelligent data products</p>
+    <!-- ================================================================
+         SKILLS
+    ================================================================= -->
+    <section id="skills" class="section-padding">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <span class="section-eyebrow">02 · Technical Skills</span>
+                <h2 class="section-title">My Technology <span class="text-gradient">Arsenal</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">The stack I use to build intelligent, production-grade data products</p>
+            </div>
+            <div class="skills-grid">
+                <div class="glass-card skill-category-card reveal" id="skill-cat-genai">
+                    <div class="card-header-icon color-gradient-purple"><i data-lucide="brain-circuit"></i></div>
+                    <h3 class="skill-cat-title">GenAI &amp; Agentic Systems</h3>
+                    <p class="skill-cat-desc">Stateful multi-agent orchestration, hybrid RAG pipelines, reranking, and local/cloud LLM integrations.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">LangGraph</span><span class="skill-tag">LangChain</span>
+                        <span class="skill-tag">RAG (Hybrid Search · RRF)</span><span class="skill-tag">BGE Reranker</span>
+                        <span class="skill-tag">FastEmbed (BM25)</span><span class="skill-tag">Google Gemini</span>
+                        <span class="skill-tag">Groq (Llama 3.1)</span><span class="skill-tag">Ollama (Mistral)</span>
+                        <span class="skill-tag">Tavily</span><span class="skill-tag">LangSmith</span>
+                        <span class="skill-tag">Qdrant</span><span class="skill-tag">Prompt Engineering</span>
+                    </div>
                 </div>
+                <div class="glass-card skill-category-card reveal" style="transition-delay:.08s;">
+                    <div class="card-header-icon color-gradient-cyan"><i data-lucide="cpu"></i></div>
+                    <h3 class="skill-cat-title">ML &amp; Deep Learning</h3>
+                    <p class="skill-cat-desc">Classical ML, deep CNN modeling, anomaly detection, explainability, and forecasting pipelines.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PyTorch</span><span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">Scikit-learn</span><span class="skill-tag">CNN (EfficientNet-B4)</span>
+                        <span class="skill-tag">XGBoost</span><span class="skill-tag">LightGBM</span>
+                        <span class="skill-tag">Prophet</span><span class="skill-tag">Google OR-Tools (LP)</span>
+                        <span class="skill-tag">PyOD</span><span class="skill-tag">Autoencoders</span>
+                        <span class="skill-tag">Isolation Forest</span><span class="skill-tag">SHAP</span>
+                    </div>
+                </div>
+                <div class="glass-card skill-category-card reveal">
+                    <div class="card-header-icon color-gradient-blue"><i data-lucide="database"></i></div>
+                    <h3 class="skill-cat-title">Data Engineering &amp; Backend</h3>
+                    <p class="skill-cat-desc">Scalable data pipelines, validation frameworks, relational modeling, and containerized services.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span><span class="skill-tag">SQL</span>
+                        <span class="skill-tag">FastAPI</span><span class="skill-tag">PostgreSQL (Neon)</span>
+                        <span class="skill-tag">SQLAlchemy</span><span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span><span class="skill-tag">Great Expectations</span>
+                        <span class="skill-tag">Docker</span><span class="skill-tag">CI/CD (GitHub Actions)</span>
+                    </div>
+                </div>
+                <div class="glass-card skill-category-card reveal" style="transition-delay:.08s;">
+                    <div class="card-header-icon color-gradient-cyan"><i data-lucide="rocket"></i></div>
+                    <h3 class="skill-cat-title">Visualization &amp; Tools</h3>
+                    <p class="skill-cat-desc">Turning model outputs into decisions — dashboards, experiment tracking, testing, and cloud deployment.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Streamlit</span><span class="skill-tag">Tableau</span>
+                        <span class="skill-tag">Power BI</span><span class="skill-tag">Seaborn</span>
+                        <span class="skill-tag">Matplotlib</span><span class="skill-tag">MLflow</span>
+                        <span class="skill-tag">A/B Testing</span><span class="skill-tag">Azure</span>
+                        <span class="skill-tag">Render</span><span class="skill-tag">Flask</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="skills-grid">
-                    <!-- Quadrant 1: AI/ML & Deep Learning -->
-                    <div class="skill-category-card glass-card" id="skill-cat-aiml">
-                        <div class="card-header-icon">
-                            <i data-lucide="brain"></i>
+    <!-- ================================================================
+         EXPERIENCE (NEW)
+    ================================================================= -->
+    <section id="experience" class="section-padding">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <span class="section-eyebrow">03 · Experience</span>
+                <h2 class="section-title">Professional <span class="text-gradient">Experience</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Applied AI &amp; analytics experience across industry teams</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-marker"><i data-lucide="briefcase"></i></div>
+                    <div class="glass-card timeline-card">
+                        <div class="timeline-head">
+                            <div>
+                                <h3 class="timeline-role">Data Analyst Intern</h3>
+                                <p class="timeline-org">The Website Makers</p>
+                            </div>
+                            <span class="timeline-date"><i data-lucide="calendar"></i> Dec 2025 – Mar 2026</span>
                         </div>
-                        <h3 class="skill-cat-title">AI/ML & Deep Learning</h3>
-                        <p class="skill-cat-desc">Classical machine learning algorithms, deep neural network modeling, explainable AI, and forecasting pipelines.</p>
+                        <ul class="timeline-points">
+                            <li>Automated data validation pipelines for web analytics (GA4, server logs), achieving <strong>100% reporting accuracy</strong> and reducing manual QA overhead by 25%.</li>
+                            <li>Streamlined cross-functional data collection workflows between engineering and marketing teams, cutting weekly report generation time by 20%.</li>
+                        </ul>
                         <div class="skill-tags">
-                            <span class="skill-tag">Time-Series Forecasting</span>
-                            <span class="skill-tag">LightGBM</span>
-                            <span class="skill-tag">XGBoost</span>
-                            <span class="skill-tag">TensorFlow</span>
-                            <span class="skill-tag">Scikit-learn</span>
-                            <span class="skill-tag">EfficientNet-B4</span>
-                            <span class="skill-tag">SHAP (Explainability)</span>
-                            <span class="skill-tag">SMOTE</span>
-                            <span class="skill-tag">Pandas / Numpy</span>
+                            <span class="skill-tag">GA4</span><span class="skill-tag">Server Logs</span>
+                            <span class="skill-tag">Data Validation</span><span class="skill-tag">Python</span><span class="skill-tag">SQL</span>
                         </div>
                     </div>
-
-                    <!-- Quadrant 2: LLMs & AI Agents -->
-                    <div class="skill-category-card glass-card" id="skill-cat-genai">
-                        <div class="card-header-icon color-gradient-purple">
-                            <i data-lucide="bot"></i>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-marker marker-purple"><i data-lucide="sparkles"></i></div>
+                    <div class="glass-card timeline-card">
+                        <div class="timeline-head">
+                            <div>
+                                <h3 class="timeline-role">AI Engineering Fellow — Sustainability Track</h3>
+                                <p class="timeline-org">IBM · 1M1B Initiative</p>
+                            </div>
+                            <span class="timeline-date"><i data-lucide="calendar"></i> Dec 2025 – Jan 2026</span>
                         </div>
-                        <h3 class="skill-cat-title">LLMs & Cognitive Agents</h3>
-                        <p class="skill-cat-desc">Building stateful, multi-agent systems, semantic routing pipelines, and local large language model integrations.</p>
+                        <ul class="timeline-points">
+                            <li>Selected for an intensive 6-week applied AI fellowship; engineered production-grade <strong>RAG and Agentic AI solutions</strong> addressing climate data challenges under IBM Labs mentorship.</li>
+                            <li>Delivered the final technical presentation to an industry panel, demonstrating scalable LLM architecture design and clear translation of complex AI concepts to non-technical stakeholders.</li>
+                        </ul>
                         <div class="skill-tags">
-                            <span class="skill-tag">LangGraph</span>
-                            <span class="skill-tag">LangChain</span>
-                            <span class="skill-tag">Groq API</span>
-                            <span class="skill-tag">Llama 3.1 & 3.3</span>
-                            <span class="skill-tag">Ollama</span>
-                            <span class="skill-tag">Mistral 7B</span>
-                            <span class="skill-tag">Retrieval-Augmented Gen (RAG)</span>
-                            <span class="skill-tag">Semantic Orchestration</span>
-                        </div>
-                    </div>
-
-                    <!-- Quadrant 3: Languages & Databases -->
-                    <div class="skill-category-card glass-card" id="skill-cat-langdb">
-                        <div class="card-header-icon color-gradient-cyan">
-                            <i data-lucide="code"></i>
-                        </div>
-                        <h3 class="skill-cat-title">Languages & Systems</h3>
-                        <p class="skill-cat-desc">Core programming languages, hardware-acceleration tools, and high-performance relational and caching databases.</p>
-                        <div class="skill-tags">
-                            <span class="skill-tag font-code">Python</span>
-                            <span class="skill-tag font-code">JavaScript</span>
-                            <span class="skill-tag font-code">SQL</span>
-                            <span class="skill-tag">CUDA (GPU Acceleration)</span>
-                            <span class="skill-tag">PostgreSQL</span>
-                            <span class="skill-tag">Redis (Caching)</span>
-                            <span class="skill-tag">Google OR-Tools</span>
-                            <span class="skill-tag">Git Version Control</span>
-                        </div>
-                    </div>
-
-                    <!-- Quadrant 4: Web Frameworks & DevOps -->
-                    <div class="skill-category-card glass-card" id="skill-cat-devops">
-                        <div class="card-header-icon color-gradient-blue">
-                            <i data-lucide="server"></i>
-                        </div>
-                        <h3 class="skill-cat-title">Web & AI Deployment</h3>
-                        <p class="skill-cat-desc">Deploying web interfaces, microservices, containerizing models, and setting up automated CI/CD pipelines.</p>
-                        <div class="skill-tags">
-                            <span class="skill-tag">FastAPI</span>
-                            <span class="skill-tag">Flask</span>
-                            <span class="skill-tag">Streamlit</span>
-                            <span class="skill-tag">Docker</span>
-                            <span class="skill-tag">CI/CD Pipelines</span>
-                            <span class="skill-tag">Vercel</span>
-                            <span class="skill-tag">Render</span>
-                            <span class="skill-tag">AWS Cloud Deployment</span>
+                            <span class="skill-tag">RAG</span><span class="skill-tag">Agentic AI</span>
+                            <span class="skill-tag">LLM Architecture</span><span class="skill-tag">Climate Data</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Projects Showcase Section -->
-        <section class="projects-section section-padding" id="projects">
-            <div class="container">
-                <div class="section-header text-center">
-                    <h2 class="section-title">Featured Projects</h2>
-                    <div class="section-divider"></div>
-                    <p class="section-subtitle">Real-world systems demonstrating AI-powered intelligence and predictive modeling</p>
-                </div>
+    <!-- ================================================================
+         PROJECTS
+    ================================================================= -->
+    <section id="projects" class="section-padding">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <span class="section-eyebrow">04 · Featured Projects</span>
+                <h2 class="section-title">Systems That <span class="text-gradient">Think &amp; Act</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Real-world platforms demonstrating agentic AI, optimization, and predictive intelligence</p>
+            </div>
+            <div class="projects-grid">
 
-                <div class="projects-grid">
-                    <!-- Project 1: SynergyOS -->
-                    <article class="project-card glass-card" id="project-synergyos">
-                        <div class="project-header">
+                <!-- OmniRAG — FEATURED -->
+                <article class="glass-card project-card project-card-featured reveal" id="project-omnirag">
+                    <div class="project-featured-inner">
+                        <div>
                             <div class="project-meta">
-                                <span class="project-category">Generative AI & Operations Research</span>
-                                <span class="project-status">Featured</span>
+                                <span class="project-category">Generative AI · Multi-Agent RAG</span>
+                                <span class="project-status badge-featured"><i data-lucide="sparkles"></i> Featured</span>
                             </div>
-                            <h3 class="project-title">SynergyOS — Cognitive Supply Chain Twin</h3>
-                        </div>
-                        <div class="project-body">
+                            <h3 class="project-title">OmniRAG — Multi-Agent Hybrid Research Assistant</h3>
                             <p class="project-desc">
-                                Engineered a hybrid cognitive system integrating deep optimization and LLM agents to revolutionize supply chain management. Combines time-series forecasting, mathematical inventory optimization, and a natural language control panel.
+                                A self-correcting multi-agent research assistant built on LangGraph. Combines hybrid retrieval,
+                                cross-encoder reranking, and an iterative critique loop to deliver reliable, automated research
+                                with minimal hallucinations.
                             </p>
-                            <div class="project-highlights-list">
-                                <div class="highlight-bullet">
-                                    <i data-lucide="check" class="bullet-icon"></i>
-                                    <span>Engineered a Prophet + LightGBM forecasting pipeline over 5+ warehouses with a 4-week horizon.</span>
-                                </div>
-                                <div class="highlight-bullet">
-                                    <i data-lucide="check" class="bullet-icon"></i>
-                                    <span>Designed a multi-objective optimization engine using Google OR-Tools to minimize holding and transfer costs.</span>
-                                </div>
-                                <div class="highlight-bullet">
-                                    <i data-lucide="check" class="bullet-icon"></i>
-                                    <span>Built an LLM Co-Pilot (LangChain + Ollama Mistral 7B) summarizing optimization scripts into 1-line manager actions.</span>
-                                </div>
-                            </div>
                             <div class="project-tech-tags">
-                                <span class="tech-tag">LightGBM</span>
-                                <span class="tech-tag">Google OR-Tools</span>
-                                <span class="tech-tag">LangChain</span>
-                                <span class="tech-tag">Ollama (Mistral)</span>
-                                <span class="tech-tag">FastAPI</span>
-                                <span class="tech-tag">Streamlit</span>
-                            </div>
-                        </div>
-                        <div class="project-footer">
-                            <a href="https://github.com/GaddeBhanu9/SynergyOS" target="_blank" rel="noopener" class="btn btn-outline btn-sm" id="project-synergy-code">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github" style="margin-right: 4px; vertical-align: middle;"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Code
-                            </a>
-                            <a href="https://synergyos-supply-chain.streamlit.app/" target="_blank" rel="noopener" class="btn btn-primary btn-sm" id="project-synergy-demo">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link" style="margin-right: 4px; vertical-align: middle;"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg> Live Demo
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- Project 2: Bank Customer Churn Predictor -->
-                    <article class="project-card glass-card" id="project-churn">
-                        <div class="project-header">
-                            <div class="project-meta">
-                                <span class="project-category">Machine Learning & Explainable AI</span>
-                            </div>
-                            <h3 class="project-title">Bank Customer Churn Predictor</h3>
-                        </div>
-                        <div class="project-body">
-                            <p class="project-desc">
-                                A production-grade customer retention classifier using advanced machine learning. Implemented explainable AI diagnostics to allow business teams to understand exactly why a customer is flagged for churn.
-                            </p>
-                            <div class="project-highlights-list">
-                                <div class="highlight-bullet">
-                                    <i data-lucide="check" class="bullet-icon"></i>
-                                    <span>Trained XGBoost classifier on 50,000+ records, achieving a highly reliable 0.89 AUC-ROC score.</span>
-                                </div>
-                                <div class="highlight-bullet">
-                                    <i data-lucide="check" class="bullet-icon"></i>
-                                    <span>Handled critical class imbalances using SMOTE upsampling to prevent skewed predictions.</span>
-                                </div>
-                                <div class="highlight-bullet">
-                                    <i data-lucide="check" class="bullet-icon"></i>
-                                    <span>Integrated SHAP (Shapley Additive exPlanations) for real-time model feature-level explainability.</span>
-                                </div>
-                            </div>
-                            <div class="project-tech-tags">
-                                <span class="tech-tag">XGBoost</span>
-                                <span class="tech-tag">Scikit-learn</span>
-                                <span class="tech-tag">SHAP</span>
-                                <span class="tech-tag">SMOTE</span>
+                                <span class="tech-tag">LangGraph</span><span class="tech-tag">Google Gemini</span>
+                                <span class="tech-tag">Qdrant</span><span class="tech-tag">FastEmbed</span>
+                                <span class="tech-tag">BGE Reranker</span><span class="tech-tag">Streamlit</span>
                                 <span class="tech-tag">Docker</span>
-                                <span class="tech-tag">AWS</span>
-                                <span class="tech-tag">Streamlit</span>
+                            </div>
+                            <div class="project-footer-links">
+                                <!-- TODO: replace # with your OmniRAG live demo URL -->
+                                <a href="#" class="btn btn-primary btn-sm"><i data-lucide="external-link"></i> Live Demo</a>
+                                <!-- TODO: verify repo URL -->
+                                <a href="https://github.com/GaddeBhanu9/OmniRAG" target="_blank" class="btn btn-outline btn-sm"><i data-lucide="github"></i> Code</a>
                             </div>
                         </div>
-                        <div class="project-footer">
-                            <a href="https://github.com/GaddeBhanu9/Bank-Churn-Predictor" target="_blank" rel="noopener" class="btn btn-outline btn-sm" id="project-churn-code">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github" style="margin-right: 4px; vertical-align: middle;"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Code
-                            </a>
-                            <a href="https://bankcustomerchurnpredictapi.streamlit.app/" target="_blank" rel="noopener" class="btn btn-primary btn-sm" id="project-churn-demo">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link" style="margin-right: 4px; vertical-align: middle;"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg> Live Demo
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- Project 3: Visual Search & Recommendation -->
-                    <article class="project-card glass-card" id="project-visualsearch">
-                        <div class="project-header">
-                            <div class="project-meta">
-                                <span class="project-category">Deep Learning & Computer Vision</span>
-                                <span class="project-status">Paper Published</span>
-                            </div>
-                            <h3 class="project-title">Deep Learning-Driven Visual Search</h3>
-                        </div>
-                        <div class="project-body">
-                            <p class="project-desc">
-                                Core system underpinning my published research. Developed a highly accurate visual similarity search engine using deep convolutional neural networks (EfficientNet-B4) to extract embedding vectors and recommend visually similar products.
-                            </p>
+                        <div class="project-featured-panel">
+                            <h4 class="panel-title"><i data-lucide="zap"></i> Engineering Highlights</h4>
                             <div class="project-highlights-list">
                                 <div class="highlight-bullet">
                                     <i data-lucide="check" class="bullet-icon"></i>
-                                    <span>Utilized EfficientNet-B4 feature extraction layers to project product images into a high-dimensional vector space.</span>
+                                    <span>Architected a self-correcting pipeline with a <strong>Critique Agent</strong> that iteratively refines outputs — reducing hallucinations by 90%.</span>
                                 </div>
                                 <div class="highlight-bullet">
                                     <i data-lucide="check" class="bullet-icon"></i>
-                                    <span>Calculated cosine distance similarities to retrieve nearest neighbors within 200ms query time.</span>
+                                    <span>Engineered hybrid retrieval: dense (Gemini 3072-dim) + sparse (BM25) with <strong>Reciprocal Rank Fusion + BGE reranking</strong> — boosting precision by 40%.</span>
                                 </div>
                                 <div class="highlight-bullet">
                                     <i data-lucide="check" class="bullet-icon"></i>
-                                    <span>Deployed visual search APIs via Flask server and connected to a dynamic, responsive web catalog.</span>
+                                    <span>Resolved Python 3.13 breaking changes in deprecated Google API packages; shipped <strong>zero-cost deployment</strong> via Streamlit Cloud + CI/CD.</span>
                                 </div>
                             </div>
-                            <div class="project-tech-tags">
-                                <span class="tech-tag">TensorFlow</span>
-                                <span class="tech-tag">EfficientNet-B4</span>
-                                <span class="tech-tag">Flask API</span>
-                                <span class="tech-tag">Vector Search</span>
-                                <span class="tech-tag">Python</span>
-                            </div>
                         </div>
-                        <div class="project-footer">
-                            <a href="https://github.com/GaddeBhanu9/Deep-Learning---Driven-Visual-Search-Based-Image-Recommendation" target="_blank" rel="noopener" class="btn btn-outline btn-sm" id="project-visual-code">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github" style="margin-right: 4px; vertical-align: middle;"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Code
-                            </a>
-                            <a href="#research" class="btn btn-primary btn-sm" id="project-visual-paper">
-                                <i data-lucide="file-text"></i> View Research
-                            </a>
+                    </div>
+                </article>
+
+                <!-- SynergyOS -->
+                <article class="glass-card project-card reveal" id="project-synergyos">
+                    <div class="project-header">
+                        <div class="project-meta">
+                            <span class="project-category">AI · Operations Research</span>
+                            <span class="project-status">Live</span>
                         </div>
-                    </article>
+                        <h3 class="project-title">SynergyOS — Cognitive Supply Chain Twin</h3>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-desc">
+                            A hybrid cognitive system integrating deep optimization and LLM agents — combining time-series
+                            forecasting, mathematical inventory optimization, and a natural-language control panel.
+                        </p>
+                        <div class="project-highlights-list">
+                            <div class="highlight-bullet"><i data-lucide="check" class="bullet-icon"></i><span>Prophet + LightGBM forecasting pipeline over 5+ warehouses with a 4-week horizon.</span></div>
+                            <div class="highlight-bullet"><i data-lucide="check" class="bullet-icon"></i><span>Multi-objective Google OR-Tools engine minimizing holding, stockout &amp; transfer costs.</span></div>
+                            <div class="highlight-bullet"><i data-lucide="check" class="bullet-icon"></i><span>LLM Co-Pilot (LangChain + Mistral 7B) turns optimization output into 1-line manager actions.</span></div>
+                        </div>
+                        <div class="project-tech-tags">
+                            <span class="tech-tag">LightGBM</span><span class="tech-tag">Google OR-Tools</span>
+                            <span class="tech-tag">LangChain</span><span class="tech-tag">Ollama (Mistral)</span>
+                            <span class="tech-tag">FastAPI</span><span class="tech-tag">Streamlit</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <a href="https://github.com/GaddeBhanu9/SynergyOS" target="_blank" class="btn btn-outline btn-sm"><i data-lucide="github"></i> Code</a>
+                        <a href="https://synergyos-supply-chain.streamlit.app/" target="_blank" class="btn btn-primary btn-sm"><i data-lucide="external-link"></i> Live Demo</a>
+                    </div>
+                </article>
+
+                <!-- VIGIL (NEW) -->
+                <article class="glass-card project-card reveal" id="project-vigil" style="transition-delay:.08s;">
+                    <div class="project-header">
+                        <div class="project-meta">
+                            <span class="project-category">Data Engineering · MLOps</span>
+                            <span class="project-status">Live</span>
+                        </div>
+                        <h3 class="project-title">VIGIL — Autonomous Data Quality &amp; Observability</h3>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-desc">
+                            An autonomous data-quality platform that detects anomalies, drift, and validation failures —
+                            then heals pipelines with AI-generated, safety-checked SQL.
+                        </p>
+                        <div class="project-highlights-list">
+                            <div class="highlight-bullet"><i data-lucide="check" class="bullet-icon"></i><span>Isolation Forest + PyTorch Autoencoders for anomaly detection; LangChain + Gemini auto-generate corrective SQL.</span></div>
+                            <div class="highlight-bullet"><i data-lucide="check" class="bullet-icon"></i><span>KS-Test / Chi-Squared drift detection + 5 Great Expectations rules → unified Data Trust Score (0–100%).</span></div>
+                            <div class="highlight-bullet"><i data-lucide="check" class="bullet-icon"></i><span>Safety-critic agent blocks destructive SQL (DELETE / DROP) for production-safe remediation.</span></div>
+                        </div>
+                        <div class="project-tech-tags">
+                            <span class="tech-tag">PyTorch</span><span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">Great Expectations</span><span class="tech-tag">Gemini</span>
+                            <span class="tech-tag">Docker</span><span class="tech-tag">Render</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <!-- TODO: verify repo URL -->
+                        <a href="https://github.com/GaddeBhanu9/VIGIL" target="_blank" class="btn btn-outline btn-sm"><i data-lucide="github"></i> Code</a>
+                        <!-- TODO: replace # with your VIGIL live demo URL -->
+                        <a href="#" class="btn btn-primary btn-sm"><i data-lucide="external-link"></i> Live Demo</a>
+                    </div>
+                </article>
+
+                <!-- Churn Predictor -->
+                <article class="glass-card project-card reveal" id="project-churn" style="transition-delay:.16s;">
+                    <div class="project-header">
+                        <div class="project-meta">
+                            <span class="project-category">Machine Learning · Explainable AI</span>
+                            <span class="project-status">Live</span>
+                        </div>
+                        <h3 class="project-title">Bank Customer Churn Predictor</h3>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-desc">
+                            A production-grade customer retention classifier with explainable AI diagnostics, so business
+                            teams understand exactly why a customer is flagged for churn.
+                        </p>
+                        <div class="project-highlights-list">
+                            <div class="highlight-bullet"><i data-lucide="check" class="bullet-icon"></i><span>XGBoost trained on 50,000+ records — achieving a 0.89 AUC-ROC score.</span></div>
+                            <div class="highlight-bullet"><i data-lucide="check" class="bullet-icon"></i><span>SMOTE upsampling to handle critical class imbalance and prevent skewed predictions.</span></div>
+                            <div class="highlight-bullet"><i data-lucide="check" class="bullet-icon"></i><span>SHAP integration for real-time, feature-level model explainability.</span></div>
+                        </div>
+                        <div class="project-tech-tags">
+                            <span class="tech-tag">XGBoost</span><span class="tech-tag">Scikit-learn</span>
+                            <span class="tech-tag">SHAP</span><span class="tech-tag">SMOTE</span>
+                            <span class="tech-tag">Docker</span><span class="tech-tag">Streamlit</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <a href="https://github.com/GaddeBhanu9/Bank-Churn-Predictor" target="_blank" class="btn btn-outline btn-sm"><i data-lucide="github"></i> Code</a>
+                        <a href="https://bankcustomerchurnpredictapi.streamlit.app/" target="_blank" class="btn btn-primary btn-sm"><i data-lucide="external-link"></i> Live Demo</a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         RESEARCH
+    ================================================================= -->
+    <section id="research" class="section-padding">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <span class="section-eyebrow">05 · Research</span>
+                <h2 class="section-title">Research <span class="text-gradient">Publications</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Academic contributions in Deep Learning and Computer Vision</p>
+            </div>
+            <div class="research-wrapper reveal">
+                <span class="research-status-badge"><i data-lucide="badge-check"></i> UGC Approved Journal</span>
+                <div class="research-grid">
+                    <div>
+                        <span class="journal-name">International Journal for Modern Trends in Science and Technology</span>
+                        <span class="journal-meta">ISSN: 2455-3778 · Vol. 12, Issue 04 · April 2026 · DOI: 10.5281/zenodo.19324579 · UGC ID: 43137</span>
+                        <h3 class="paper-title">Deep Learning – Driven Visual Search and Image Recommendation</h3>
+                        <p class="paper-authors"><strong>Authors:</strong> G. Bhanu Prakash, Dr. V. Divya</p>
+                        <p class="paper-abstract">
+                            This paper proposes an end-to-end framework leveraging state-of-the-art Deep Convolutional Neural
+                            Networks for visual similarity retrieval and image-based product recommendation. By tuning feature
+                            extraction layers on custom datasets and implementing vector-distance indices, the system delivers
+                            highly relevant visual catalog recommendations with minimal latency (&lt;200ms).
+                        </p>
+                        <div class="paper-actions">
+                            <a href="G.Bhanu Prakash certificate.pdf" target="_blank" class="btn btn-primary btn-sm"><i data-lucide="file-text"></i> View Publication Certificate</a>
+                            <a href="https://github.com/GaddeBhanu9/Deep-Learning---Driven-Visual-Search-Based-Image-Recommendation" target="_blank" class="btn btn-outline btn-sm"><i data-lucide="code"></i> Project Code</a>
+                        </div>
+                    </div>
+                    <div class="research-cert-preview">
+                        <div class="pdf-icon-bg"><i data-lucide="file-text"></i></div>
+                        <span class="preview-text">Registered Publication</span>
+                        <span class="preview-enterprise">Enterprise with Ministry of MSME, Govt of India</span>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Research & Publications Section -->
-        <section class="research-section section-padding" id="research">
-            <div class="container">
-                <div class="section-header text-center">
-                    <h2 class="section-title">Research Publications</h2>
-                    <div class="section-divider"></div>
-                    <p class="section-subtitle">Academic contributions in Deep Learning and Computer Vision</p>
-                </div>
-
-                <div class="research-wrapper glass-card">
-                    <div class="research-status-badge">
-                        <i data-lucide="award"></i> UGC Approved Journal
+    <!-- ================================================================
+         CERTIFICATIONS
+    ================================================================= -->
+    <section id="certifications" class="section-padding">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <span class="section-eyebrow">06 · Achievements</span>
+                <h2 class="section-title">Certifications &amp; <span class="text-gradient">Milestones</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Continuous pursuit of knowledge and technical validation</p>
+            </div>
+            <div class="certs-grid">
+                <div class="glass-card cert-card reveal">
+                    <div class="cert-logo"><div class="logo-circle bg-ibm">IBM</div></div>
+                    <h3 class="cert-title">AI + Sustainability Certificate</h3>
+                    <p class="cert-provider">IBM SkillsBuild · 1M1B Initiative</p>
+                    <p class="cert-date">Completed: Jan 2026</p>
+                    <p class="cert-description">Validated expertise in Agentic AI and RAG architectures through the official IBM SkillsBuild program — including a 6-week fellowship building production-grade LLM solutions for climate data.</p>
+                    <div class="cert-actions">
+                        <a href="Completion Certificate _ SkillsBuild.pdf" target="_blank" class="btn btn-outline btn-sm"><i data-lucide="external-link"></i> View Certificate</a>
                     </div>
-                    <div class="research-grid">
-                        <div class="research-info">
-                            <span class="journal-name">International Journal for Modern Trends in Science and Technology</span>
-                            <span class="journal-meta">ISSN: 2455-3778 | Vol. 12, Issue 04 | April 2026</span>
-                            <h3 class="paper-title">Deep Learning – Driven Visual Search and Image Recommendation</h3>
-                            <p class="paper-authors">Authors: <strong>G. Bhanu Prakash</strong>, Dr. V. Divya</p>
-                            <p class="paper-abstract">
-                                <strong>Abstract:</strong> This research paper proposes an end-to-end framework leveraging state-of-the-art Deep Convolutional Neural Networks (CNNs) for visual similarity retrieval and image-based product recommendation. By tuning feature extraction layers on custom datasets and implementing vector-distance indices, the system offers an optimized approach to visual catalogs, ensuring highly relevant search recommendations with minimal latency.
-                            </p>
-                            <div class="paper-actions">
-                                <a href="G.Bhanu Prakash certificate.pdf" target="_blank" class="btn btn-primary" id="view-pub-cert">
-                                    <i data-lucide="external-link"></i> View Publication Certificate
-                                </a>
-                            </div>
-                        </div>
-                        <div class="research-cert-preview">
-                            <div class="pdf-icon-bg">
-                                <i data-lucide="file-text" class="pdf-icon"></i>
-                            </div>
-                            <span class="preview-text">Registered Publication</span>
-                            <span class="preview-enterprise">Enterprise with Ministry of MSME, Govt of India</span>
-                        </div>
+                </div>
+                <div class="glass-card cert-card reveal" style="transition-delay:.08s;">
+                    <div class="cert-logo"><div class="logo-circle bg-iiit">IIIT</div></div>
+                    <h3 class="cert-title">Top 8 — Megathon 2025</h3>
+                    <p class="cert-provider">E-Cell IIIT Hyderabad</p>
+                    <p class="cert-date">Conducted: 2025</p>
+                    <p class="cert-description">Ranked among the Top 8 teams ("Hack Masters") in Hyderabad's premier hackathon, demonstrating rapid AI prototype design and collaborative engineering under pressure.</p>
+                    <div class="cert-actions">
+                        <a href="Gadde_Bhanu_Prakash_Certificate.pdf" target="_blank" class="btn btn-outline btn-sm"><i data-lucide="external-link"></i> View Certificate</a>
+                    </div>
+                </div>
+                <div class="glass-card cert-card reveal" style="transition-delay:.16s;">
+                    <div class="cert-logo"><div class="logo-circle bg-iitj">IIT</div></div>
+                    <h3 class="cert-title">Adv. Cert — Data Science with AI</h3>
+                    <p class="cert-provider">IIT Jammu</p>
+                    <p class="cert-date">2026 – Present</p>
+                    <p class="cert-description">Pursuing an advanced certification deepening expertise in applied data science, statistical modeling, and end-to-end AI system design.</p>
+                    <div class="cert-actions">
+                        <span class="cert-status-pill">In Progress</span>
+                    </div>
+                </div>
+                <div class="glass-card cert-card reveal" style="transition-delay:.24s;">
+                    <div class="cert-logo"><div class="logo-circle bg-pbrvits">PBR</div></div>
+                    <h3 class="cert-title">Web Design Competition Winner</h3>
+                    <p class="cert-provider">PBR VITS College Festival</p>
+                    <p class="cert-date">Accomplished: 2024</p>
+                    <p class="cert-description">Won 1st place for crafting a responsive web platform layout integrating clean, interactive CSS animations.</p>
+                    <div class="cert-actions">
+                        <span class="cert-status-pill pill-winner"><i data-lucide="trophy"></i> Verified Winner</span>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Achievements & Certifications Section -->
-        <section class="certifications-section section-padding" id="certifications">
-            <div class="container">
-                <div class="section-header text-center">
-                    <h2 class="section-title">Achievements & Certifications</h2>
-                    <div class="section-divider"></div>
-                    <p class="section-subtitle">Milestones showing my continuous pursuit of knowledge and technical validation</p>
-                </div>
-
-                <div class="certs-grid">
-                    <!-- Certificate 1: IBM SkillsBuild -->
-                    <div class="cert-card glass-card">
-                        <div class="cert-logo">
-                            <div class="logo-circle bg-ibm">
-                                <i data-lucide="award" class="cert-icon-award"></i>
-                            </div>
-                        </div>
-                        <h3 class="cert-title">AI + Sustainability Virtual Internship</h3>
-                        <p class="cert-provider">IBM SkillsBuild | 1M1B</p>
-                        <p class="cert-date">Completed: Dec 2025</p>
-                        <p class="cert-description">Acquired training in applying artificial intelligence models to sustainability projects, focusing on green computing practices and data models for environmental impacts.</p>
-                        <div class="cert-actions">
-                            <a href="Completion Certificate _ SkillsBuild.pdf" target="_blank" class="btn btn-outline btn-sm btn-full-width" id="cert-skillsbuild-btn">
-                                <i data-lucide="eye"></i> View Certificate
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Certificate 2: Megathon 2025 -->
-                    <div class="cert-card glass-card">
-                        <div class="cert-logo">
-                            <div class="logo-circle bg-iiit">
-                                <i data-lucide="trophy" class="cert-icon-trophy"></i>
-                            </div>
-                        </div>
-                        <h3 class="cert-title">Megathon 2025 Participant</h3>
-                        <p class="cert-provider">E-Cell IIIT Hyderabad | Chubb / Qualcomm</p>
-                        <p class="cert-date">Conducted: 2025</p>
-                        <p class="cert-description">Represented Team <strong>"Hack Masters"</strong> in Hyderabad's premier hackathon, implementing collaborative projects and demonstrating rapid AI prototype design.</p>
-                        <div class="cert-actions">
-                            <a href="Gadde_Bhanu_Prakash_Certificate.pdf" target="_blank" class="btn btn-outline btn-sm btn-full-width" id="cert-megathon-btn">
-                                <i data-lucide="eye"></i> View Certificate
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Certificate 3: Web Design -->
-                    <div class="cert-card glass-card">
-                        <div class="cert-logo">
-                            <div class="logo-circle bg-pbrvits">
-                                <i data-lucide="crown" class="cert-icon-winner"></i>
-                            </div>
-                        </div>
-                        <h3 class="cert-title">Web Design Competition Winner</h3>
-                        <p class="cert-provider">PBR VITS College Festival</p>
-                        <p class="cert-date">Accomplished: 2024</p>
-                        <p class="cert-description">Won 1st place in the college-level web design tournament for crafting a responsive web platform layout integrating clean interactive CSS animations.</p>
-                        <div class="cert-actions">
-                            <span class="btn btn-disabled btn-sm btn-full-width">
-                                <i data-lucide="check"></i> Verified Winner Badge
-                            </span>
-                        </div>
-                    </div>
-                </div>
+    <!-- ================================================================
+         AI CHATBOT
+    ================================================================= -->
+    <section id="chatbot" class="section-padding">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <span class="section-eyebrow">07 · AI Co-Pilot</span>
+                <h2 class="section-title">Bhanu AI <span class="text-gradient">Co-Pilot</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Chat with my AI twin to explore projects, experience, skills, and availability</p>
             </div>
-        </section>
-
-        <!-- Interactive AI Co-Pilot Widget -->
-        <section class="chatbot-section section-padding" id="chatbot">
-            <div class="container chatbot-container">
-                <div class="section-header text-center">
-                    <h2 class="section-title">Bhanu AI Co-Pilot</h2>
-                    <div class="section-divider"></div>
-                    <p class="section-subtitle">Chat with my AI twin to learn more about my skills, projects, and availability</p>
-                </div>
-
-                <div class="chat-wrapper glass-card">
+            <div class="chatbot-container reveal">
+                <div class="chat-wrapper">
                     <div class="chat-header">
                         <div class="bot-info-header">
-                            <div class="bot-avatar">
-                                <i data-lucide="bot"></i>
-                                <span class="online-indicator"></span>
-                            </div>
-                            <div class="bot-details">
+                            <div class="bot-avatar"><i data-lucide="bot"></i><span class="online-indicator"></span></div>
+                            <div>
                                 <span class="bot-name">Bhanu AI Twin</span>
                                 <span class="bot-status">Powered by local knowledge agent</span>
                             </div>
                         </div>
                         <div class="chat-header-actions">
-                            <button id="clear-chat" type="button" title="Clear chat history" aria-label="Clear Chat">
-                                <i data-lucide="trash-2"></i>
-                            </button>
+                            <button id="clear-chat" title="Clear chat" aria-label="Clear chat"><i data-lucide="trash-2"></i></button>
                         </div>
                     </div>
-
-                    <!-- Chat Messages Display -->
-                    <div class="chat-messages" id="chat-messages">
+                    <div id="chat-messages" class="chat-messages">
                         <div class="message msg-bot">
-                            <div class="msg-avatar">
-                                <i data-lucide="bot"></i>
-                            </div>
+                            <div class="msg-avatar"><i data-lucide="bot"></i></div>
                             <div class="msg-bubble">
-                                Hi there! 👋 I am Bhanu's AI Co-Pilot twin. I can tell you all about his projects (like SynergyOS or the Churn Predictor), his technical skills, education, or publications. What would you like to know?
+                                Hi there! 👋 I am Bhanu's AI Co-Pilot twin. Ask me about his projects
+                                (OmniRAG, SynergyOS, VIGIL), work experience, skills, research, or how to reach him.
                             </div>
                         </div>
                     </div>
-
-                    <!-- Suggested Chips -->
-                    <div class="chat-chips" id="chat-chips">
-                        <button class="chat-chip" type="button" data-query="Tell me about SynergyOS">SynergyOS Project</button>
-                        <button class="chat-chip" type="button" data-query="What is your published research about?">Research Paper</button>
-                        <button class="chat-chip" type="button" data-query="What are your AI Engineering skills?">AI Engineer Skills</button>
-                        <button class="chat-chip" type="button" data-query="How can I contact or hire you?">How to Contact</button>
+                    <div class="chat-chips">
+                        <button type="button" class="chat-chip" data-query="Tell me about OmniRAG">OmniRAG</button>
+                        <button type="button" class="chat-chip" data-query="Tell me about SynergyOS">SynergyOS</button>
+                        <button type="button" class="chat-chip" data-query="Tell me about VIGIL">VIGIL</button>
+                        <button type="button" class="chat-chip" data-query="Tell me about your work experience">Experience</button>
+                        <button type="button" class="chat-chip" data-query="Tell me about your research paper">Research Paper</button>
+                        <button type="button" class="chat-chip" data-query="How can I contact Bhanu?">Contact</button>
                     </div>
-
-                    <!-- Input Box -->
-                    <form class="chat-input-area" id="chat-form">
-                        <input type="text" id="chat-input" placeholder="Ask Bhanu's AI Twin anything..." autocomplete="off" aria-label="Chat input">
-                        <button type="submit" class="btn-send" id="chat-send" aria-label="Send message">
-                            <i data-lucide="send"></i>
-                        </button>
+                    <form id="chat-form" class="chat-input-area">
+                        <input type="text" id="chat-input" placeholder="Ask about projects, skills, experience..." autocomplete="off">
+                        <button type="submit" class="btn-send" aria-label="Send message"><i data-lucide="send"></i></button>
                     </form>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Contact Section -->
-        <section class="contact-section section-padding" id="contact">
-            <div class="container">
-                <div class="section-header text-center">
-                    <h2 class="section-title">Get In Touch</h2>
-                    <div class="section-divider"></div>
-                    <p class="section-subtitle">Let's discuss how we can build something impactful together</p>
-                </div>
-
-                <div class="contact-grid">
-                    <div class="contact-info-card glass-card">
-                        <h3 class="contact-info-title">Contact Information</h3>
-                        <p class="contact-info-desc">Feel free to reach out for research collaboration, job opportunities, or just a virtual coffee chat about AI agent architectures!</p>
-                        
-                        <div class="contact-details-list">
-                            <div class="contact-item">
-                                <div class="contact-item-icon">
-                                    <i data-lucide="mail"></i>
-                                </div>
-                                <div class="contact-item-text">
-                                    <span class="detail-label">Email Me</span>
-                                    <a href="mailto:gaddebhanu111@gmail.com" class="detail-val">gaddebhanu111@gmail.com</a>
-                                </div>
-                            </div>
-
-                            <div class="contact-item">
-                                <div class="contact-item-icon">
-                                    <i data-lucide="phone"></i>
-                                </div>
-                                <div class="contact-item-text">
-                                    <span class="detail-label">Call / WhatsApp</span>
-                                    <a href="tel:+917396652709" class="detail-val">+91 7396652709</a>
-                                </div>
-                            </div>
-
-                            <div class="contact-item">
-                                <div class="contact-item-icon">
-                                    <i data-lucide="map-pin"></i>
-                                </div>
-                                <div class="contact-item-text">
-                                    <span class="detail-label">Location</span>
-                                    <span class="detail-val">Andhra Pradesh, India</span>
-                                </div>
-                            </div>
-
-                            <div class="contact-item">
-                                <div class="contact-item-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-                                </div>
-                                <div class="contact-item-text">
-                                    <span class="detail-label">GitHub Profile</span>
-                                    <a href="https://github.com/GaddeBhanu9" target="_blank" rel="noopener" class="detail-val">GaddeBhanu9</a>
-                                </div>
-                            </div>
-
-                            <div class="contact-item">
-                                <div class="contact-item-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                                </div>
-                                <div class="contact-item-text">
-                                    <span class="detail-label">LinkedIn Profile</span>
-                                    <a href="https://www.linkedin.com/in/gadde-bhanu-prakash-26aa74389" target="_blank" rel="noopener" class="detail-val">gadde-bhanu-prakash-26aa74389</a>
-                                </div>
+    <!-- ================================================================
+         CONTACT
+    ================================================================= -->
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <span class="section-eyebrow">08 · Contact</span>
+                <h2 class="section-title">Get In <span class="text-gradient">Touch</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Let's discuss how we can build something impactful together</p>
+            </div>
+            <div class="contact-grid">
+                <div class="glass-card contact-info-card reveal">
+                    <h3 class="contact-info-title">Contact Information</h3>
+                    <p class="contact-info-desc">
+                        Reach out for research collaborations, job opportunities, or just a virtual coffee chat
+                        about AI agent architectures!
+                    </p>
+                    <div class="contact-details-list">
+                        <div class="contact-item">
+                            <div class="contact-item-icon"><i data-lucide="mail"></i></div>
+                            <div class="contact-item-text">
+                                <span class="detail-label">Email Me</span>
+                                <a href="mailto:gaddebhanu333@gmail.com" class="detail-val">gaddebhanu333@gmail.com</a>
                             </div>
                         </div>
-
-
-                    </div>
-
-                    <!-- Contact Form Card -->
-                    <div class="contact-form-card glass-card">
-                        <form id="contact-form" action="https://formspree.io/f/placeholder" method="POST">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="form-name">Your Name</label>
-                                    <input type="text" id="form-name" name="name" placeholder="John Doe" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="form-email">Your Email</label>
-                                    <input type="email" id="form-email" name="email" placeholder="john@example.com" required>
-                                </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon"><i data-lucide="phone"></i></div>
+                            <div class="contact-item-text">
+                                <span class="detail-label">Call / WhatsApp</span>
+                                <a href="tel:+917396652709" class="detail-val">+91 7396652709</a>
                             </div>
-                            
-                            <div class="form-group">
-                                <label for="form-subject">Subject</label>
-                                <input type="text" id="form-subject" name="subject" placeholder="Project Collaboration Proposal" required>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon"><i data-lucide="map-pin"></i></div>
+                            <div class="contact-item-text">
+                                <span class="detail-label">Location</span>
+                                <span class="detail-val">Andhra Pradesh, India</span>
                             </div>
-
-                            <div class="form-group">
-                                <label for="form-message">Message</label>
-                                <textarea id="form-message" name="message" rows="5" placeholder="Hey Bhanu, I saw your SynergyOS project..." required></textarea>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon"><i data-lucide="github"></i></div>
+                            <div class="contact-item-text">
+                                <span class="detail-label">GitHub Profile</span>
+                                <a href="https://github.com/GaddeBhanu9" target="_blank" class="detail-val">GaddeBhanu9</a>
                             </div>
-
-                            <button type="submit" class="btn btn-primary btn-full-width" id="form-submit-btn">
-                                Send Message <i data-lucide="send"></i>
-                            </button>
-                            <div id="form-status-msg" class="form-status-msg"></div>
-                        </form>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon"><i data-lucide="linkedin"></i></div>
+                            <div class="contact-item-text">
+                                <span class="detail-label">LinkedIn Profile</span>
+                                <a href="https://www.linkedin.com/in/gadde-bhanu-prakash-26aa74389" target="_blank" class="detail-val">gadde-bhanu-prakash-26aa74389</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="glass-card contact-form-card reveal" style="transition-delay:.08s;">
+                    <!-- TODO: replace placeholder with your Formspree endpoint to receive real emails -->
+                    <form id="contact-form" action="https://formspree.io/f/placeholder" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="form-name">Your Name</label>
+                                <input type="text" id="form-name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="form-email">Your Email</label>
+                                <input type="email" id="form-email" name="email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-subject">Subject</label>
+                            <input type="text" id="form-subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-message">Message</label>
+                            <textarea id="form-message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" id="form-submit-btn" class="btn btn-primary btn-full-width">
+                            Send Message <i data-lucide="send"></i>
+                        </button>
+                        <p id="form-status-msg" class="form-status-msg"></p>
+                    </form>
+                </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <!-- Footer -->
+    <!-- ================================================================
+         FOOTER
+    ================================================================= -->
     <footer class="site-footer">
         <div class="container footer-container">
             <div class="footer-left">
-                <span class="logo-text">Bhanu<span class="text-gradient">.AI</span></span>
+                <a href="#hero" class="logo-link"><span class="logo-text">Bhanu<span class="text-gradient">.AI</span></span></a>
                 <p class="footer-desc">Building cognitive intelligence pipelines for the future.</p>
-                <div class="footer-socials" style="display: flex; gap: 1rem; margin-top: 1rem;">
-                    <a href="https://github.com/GaddeBhanu9" target="_blank" rel="noopener" aria-label="GitHub" style="color: var(--text-secondary); transition: color var(--transition-fast);"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a>
-                    <a href="https://www.linkedin.com/in/gadde-bhanu-prakash-26aa74389" target="_blank" rel="noopener" aria-label="LinkedIn" style="color: var(--text-secondary); transition: color var(--transition-fast);"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
-                </div>
             </div>
             <div class="footer-right">
-                <p class="copyright">&copy; 2026 Gadde Bhanu Prakash. Built with HTML, CSS, and JS. All rights reserved.</p>
+                <p class="copyright">© 2026 Gadde Bhanu Prakash. Built with HTML, CSS &amp; JS. All rights reserved.</p>
                 <div class="footer-links">
                     <a href="#about">About</a>
-                    <a href="#skills">Skills</a>
+                    <a href="#experience">Experience</a>
                     <a href="#projects">Projects</a>
                     <a href="#chatbot">AI Twin</a>
                 </div>
@@ -751,11 +713,7 @@
         </div>
     </footer>
 
-    <!-- Custom Cursor Follower -->
-    <div class="custom-cursor-dot" id="cursor-dot"></div>
-    <div class="custom-cursor-ring" id="cursor-ring"></div>
-
-    <!-- Custom JS -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="script.js"></script>
 </body>
 </html>
