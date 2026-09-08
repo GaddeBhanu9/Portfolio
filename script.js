@@ -134,7 +134,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <li><strong>Hybrid Retrieval:</strong> Dense (Gemini 3072-dim) + sparse (BM25 / FastEmbed) embeddings fused with Reciprocal Rank Fusion and BGE Cross-Encoder reranking — boosting retrieval precision by <strong>40%</strong>.</li>
                 <li><strong>Production-Ready:</strong> Migrated deprecated Google API packages for Python 3.13 and shipped zero-cost deployment via Streamlit Cloud + GitHub Actions CI/CD.</li>
             </ul>
-            Stack: LangGraph · Google Gemini · Qdrant · FastEmbed · Streamlit · Docker
+            GitHub: <a href="https://github.com/GaddeBhanu9/OMNIRAG_AGENTIC_AI" target="_blank">GaddeBhanu9/OMNIRAG_AGENTIC_AI</a>
+            <br>Live Demo: <a href="https://omniragai.streamlit.app/" target="_blank">omniragai.streamlit.app</a>
         `,
         vigil: `
             <strong>VIGIL — Autonomous AI Data Quality &amp; Observability Platform:</strong>
@@ -143,8 +144,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 <li><strong>Drift Detection:</strong> KS-Test &amp; Chi-Squared monitoring plus 5 Great Expectations validation rules feed a unified <strong>Data Trust Score (0–100%)</strong>.</li>
                 <li><strong>Safety-Critic Agent:</strong> Intercepts and blocks destructive SQL (DELETE / DROP), keeping autonomous remediation production-safe.</li>
             </ul>
-            Stack: PyTorch · FastAPI · Great Expectations · Gemini · Docker · Render
+            GitHub: <a href="https://github.com/GaddeBhanu9/vigil" target="_blank">GaddeBhanu9/vigil</a>
+            <br>Live Demo: <a href="https://vigildataengine.streamlit.app/" target="_blank">vigildataengine.streamlit.app</a>
         `,
+
         synergyos: `
             <strong>SynergyOS — Cognitive Supply Chain Twin</strong> is one of Bhanu's major projects:
             <ul>
