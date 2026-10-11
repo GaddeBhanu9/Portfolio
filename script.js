@@ -1,76 +1,44 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Lucide Icons
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-    }
-
-    // Flag that JS is active (enables reveal animations safely)
+    const icons = () => { if (typeof lucide !== 'undefined') lucide.createIcons(); };
+    icons();
     document.body.classList.add('js-enabled');
 
-    // ==========================================================================
-    // STICKY HEADER & ACTIVE SECTION NAV INDICATOR
-    // ==========================================================================
+    // ===== Sticky header + active nav link =====
     const header = document.getElementById('site-header');
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
-
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-
-        let currentSectionId = '';
-        const scrollPosition = window.scrollY + 200;
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                currentSectionId = section.getAttribute('id');
-            }
-        });
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${currentSectionId}`) {
-                link.classList.add('active');
-            }
-        });
+        header.classList.toggle('scrolled', window.scrollY > 50);
+        let current = '';
+        const pos = window.scrollY + 200;
+        sections.forEach(s => { if (pos >= s.offsetTop && pos < s.offsetTop + s.offsetHeight) current = s.id; });
+        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
     });
 
-    // ==========================================================================
-    // MOBILE MENU NAV DRAWER
-    // ==========================================================================
-    const mobileNavToggle = document.getElementById('mobile-nav-toggle');
-    const mainNav = document.getElementById('main-nav');
-    if (mobileNavToggle && mainNav) {
-        mobileNavToggle.addEventListener('click', () => {
-            const isOpen = mainNav.classList.contains('open');
-            mainNav.classList.toggle('open');
-            mobileNavToggle.setAttribute('aria-expanded', !isOpen);
+    // ===== Mobile nav =====
+    const toggle = document.getElementById('mobile-nav-toggle');
+    const nav = document.getElementById('main-nav');
+    if (toggle && nav) {
+        toggle.addEventListener('click', () => {
+            const open = nav.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', open);
         });
-        const menuLinks = mainNav.querySelectorAll('.nav-link');
-        menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mainNav.classList.remove('open');
-                mobileNavToggle.setAttribute('aria-expanded', 'false');
-            });
-        });
+        nav.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', () => {
+            nav.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+        }));
     }
 
-    // ==========================================================================
-    // SCROLL REVEAL ANIMATIONS
-    // ==========================================================================
+    // ===== Scroll reveal =====
     const revealEls = document.querySelectorAll('.reveal');
     if ('IntersectionObserver' in window) {
-        const revealObserver = new IntersectionObserver((entries, obs) => {
+        const io = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
                 const el = entry.target;
                 el.classList.add('revealed');
                 obs.unobserve(el);
-                // Remove reveal classes after animation so hover transforms work normally
-                const cleanup = (e) => {
+                const cleanup = e => {
                     if (e.propertyName === 'transform') {
                         el.classList.remove('reveal', 'revealed');
                         el.removeEventListener('transitionend', cleanup);
@@ -79,482 +47,253 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.addEventListener('transitionend', cleanup);
             });
         }, { threshold: 0.12 });
-        revealEls.forEach(el => revealObserver.observe(el));
+        revealEls.forEach(el => io.observe(el));
     } else {
         revealEls.forEach(el => el.classList.remove('reveal'));
     }
 
-    // ==========================================================================
-    // ANIMATED STAT COUNTERS
-    // ==========================================================================
+    // ===== Animated counters =====
     const counters = document.querySelectorAll('.highlight-num[data-count]');
-    counters.forEach(el => {
-        const decimals = parseInt(el.dataset.decimals || '0', 10);
-        const suffix = el.dataset.suffix || '';
-        el.textContent = (0).toFixed(decimals) + suffix; // reset start value
-    });
-    if ('IntersectionObserver' in window && counters.length > 0) {
-        const counterObserver = new IntersectionObserver((entries, obs) => {
+    const fmt = (el, v) => (v).toFixed(parseInt(el.dataset.decimals || '0', 10)) + (el.dataset.suffix || '');
+    counters.forEach(el => { el.textContent = fmt(el, 0); });
+    if ('IntersectionObserver' in window && counters.length) {
+        const co = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
-                const el = entry.target;
-                const target = parseFloat(el.dataset.count);
-                const decimals = parseInt(el.dataset.decimals || '0', 10);
-                const suffix = el.dataset.suffix || '';
-                const duration = 1400;
-                const startTime = performance.now();
-                function tick(now) {
-                    const progress = Math.min((now - startTime) / duration, 1);
-                    const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-                    el.textContent = (target * eased).toFixed(decimals) + suffix;
-                    if (progress < 1) requestAnimationFrame(tick);
-                }
+                const el = entry.target, target = parseFloat(el.dataset.count), t0 = performance.now();
+                const tick = now => {
+                    const p = Math.min((now - t0) / 1400, 1);
+                    el.textContent = fmt(el, target * (1 - Math.pow(1 - p, 3)));
+                    if (p < 1) requestAnimationFrame(tick);
+                };
                 requestAnimationFrame(tick);
                 obs.unobserve(el);
             });
         }, { threshold: 0.5 });
-        counters.forEach(c => counterObserver.observe(c));
+        counters.forEach(c => co.observe(c));
+    } else {
+        counters.forEach(c => { c.textContent = fmt(c, parseFloat(c.dataset.count)); });
     }
 
-    // ==========================================================================
-    // BHANU AI CO-PILOT CHATBOT TWIN SIMULATOR
-    // ==========================================================================
-    const chatMessagesContainer = document.getElementById('chat-messages');
+    // ===== Bhanu AI chatbot (knowledge synced with resume) =====
+    const msgBox = document.getElementById('chat-messages');
     const chatForm = document.getElementById('chat-form');
     const chatInput = document.getElementById('chat-input');
-    const chatChips = document.querySelectorAll('.chat-chip');
-    const clearChatBtn = document.getElementById('clear-chat');
+    const chips = document.querySelectorAll('.chat-chip');
+    const clearBtn = document.getElementById('clear-chat');
 
-    // Bot Responses Knowledge Database (synced with resume)
-    const knowledgeBase = {
-        omnirag: `
-            <strong>OmniRAG — Multi-Agent Hybrid Research Assistant</strong> is Bhanu's flagship GenAI project:
-            <ul>
-                <li><strong>Self-Correcting Agents:</strong> Architected a LangGraph pipeline with a Critique Agent that iteratively refines outputs — reducing hallucinations by <strong>90%</strong>.</li>
-                <li><strong>Hybrid Retrieval:</strong> Dense (Gemini 3072-dim) + sparse (BM25 / FastEmbed) embeddings fused with Reciprocal Rank Fusion and BGE Cross-Encoder reranking — boosting retrieval precision by <strong>40%</strong>.</li>
-                <li><strong>Production-Ready:</strong> Migrated deprecated Google API packages for Python 3.13 and shipped zero-cost deployment via Streamlit Cloud + GitHub Actions CI/CD.</li>
-            </ul>
-            GitHub: <a href="https://github.com/GaddeBhanu9/OMNIRAG_AGENTIC_AI" target="_blank">GaddeBhanu9/OMNIRAG_AGENTIC_AI</a>
-            <br>Live Demo: <a href="https://omniragai.streamlit.app/" target="_blank">omniragai.streamlit.app</a>
-        `,
-        vigil: `
-            <strong>VIGIL — Autonomous AI Data Quality &amp; Observability Platform:</strong>
-            <ul>
-                <li><strong>Autonomous Healing:</strong> Isolation Forest + PyTorch Autoencoders detect anomalies, while LangChain + Gemini auto-generate corrective SQL queries.</li>
-                <li><strong>Drift Detection:</strong> KS-Test &amp; Chi-Squared monitoring plus 5 Great Expectations validation rules feed a unified <strong>Data Trust Score (0–100%)</strong>.</li>
-                <li><strong>Safety-Critic Agent:</strong> Intercepts and blocks destructive SQL (DELETE / DROP), keeping autonomous remediation production-safe.</li>
-            </ul>
-            GitHub: <a href="https://github.com/GaddeBhanu9/vigil" target="_blank">GaddeBhanu9/vigil</a>
-            <br>Live Demo: <a href="https://vigildataengine.streamlit.app/" target="_blank">vigildataengine.streamlit.app</a>
-        `,
-
-        synergyos: `
-            <strong>SynergyOS — Cognitive Supply Chain Twin</strong> is one of Bhanu's major projects:
-            <ul>
-                <li><strong>Demand Sensing:</strong> A hybrid Prophet + LightGBM engine forecasting over 5+ warehouses with a 4-week foresight.</li>
-                <li><strong>Inventory Optimization:</strong> A linear programming optimizer (Google OR-Tools) balancing holding, stockout &amp; transfer costs.</li>
-                <li><strong>AI Co-Pilot:</strong> LangChain + local Mistral 7B (Ollama) lets managers query optimization results in plain English — cutting decision time by 80%.</li>
-            </ul>
-            GitHub: <a href="https://github.com/GaddeBhanu9/SynergyOS" target="_blank">GaddeBhanu9/SynergyOS</a>
-            <br>Live Demo: <a href="https://synergyos-supply-chain.streamlit.app/" target="_blank">synergyos-supply-chain.streamlit.app</a>
-        `,
-        churn: `
-            <strong>Bank Customer Churn Predictor:</strong>
-            A machine learning classification pipeline designed to retain customers.
-            <ul>
-                <li><strong>Model:</strong> Trained an XGBoost model on 50,000+ customer records.</li>
-                <li><strong>Techniques:</strong> SMOTE upsampling to handle dataset imbalances, resulting in a <strong>0.89 AUC-ROC</strong> score.</li>
-                <li><strong>Explainability:</strong> SHAP value calculations show which individual factors drove each prediction.</li>
-            </ul>
-            GitHub: <a href="https://github.com/GaddeBhanu9/Bank-Churn-Predictor" target="_blank">GaddeBhanu9/Bank-Churn-Predictor</a>
-            <br>Live Demo: <a href="https://bankcustomerchurnpredictapi.streamlit.app/" target="_blank">bankcustomerchurnpredictapi.streamlit.app</a>
-        `,
-        research: `
-            Bhanu published a research article titled
-            <strong>"Deep Learning – Driven Visual Search and Image Recommendation"</strong> in the <em>International Journal for Modern Trends in Science and Technology</em> (Vol. 12, Issue 04, April 2026). UGC Approved (ID: 43137) · DOI: 10.5281/zenodo.19324579.
-            <br><br>
-            It uses deep CNN feature representations (EfficientNet-B4) to search product image catalogs and recommend items via cosine similarity within 200ms.
-            <br><br>
-            📄 You can check the <a href="G.Bhanu Prakash certificate.pdf" target="_blank">Publication Certificate</a> or browse the <a href="https://github.com/GaddeBhanu9/Deep-Learning---Driven-Visual-Search-Based-Image-Recommendation" target="_blank">Project Code</a>.
-        `,
-        experience: `
-            Bhanu has two professional experiences:
-            <ul>
-                <li><strong>Data Analyst Intern — The Website Makers</strong> (Dec 2025 – Mar 2026): Automated GA4 &amp; server-log validation pipelines → <strong>100% reporting accuracy</strong>, 25% less manual QA, and 20% faster weekly reports.</li>
-                <li><strong>AI Engineering Fellow (Sustainability) — IBM · 1M1B</strong> (Dec 2025 – Jan 2026): Built production-grade RAG &amp; Agentic AI solutions for climate data under IBM Labs mentorship, and presented the architecture to an industry panel.</li>
-            </ul>
-        `,
-        skills: `
-            Here is Bhanu's technology stack:
-            <ul>
-                <li><strong>GenAI &amp; Agentic Systems:</strong> LangGraph, LangChain, RAG (Hybrid Search, RRF, BGE Reranker), FastEmbed (BM25), Google Gemini, Ollama (Mistral), Groq (Llama 3.1), Tavily, LangSmith, Qdrant, Prompt Engineering</li>
-                <li><strong>ML &amp; Deep Learning:</strong> PyTorch, TensorFlow, Scikit-learn, CNN (EfficientNet-B4), XGBoost, LightGBM, Prophet, Google OR-Tools (LP), PyOD, Autoencoders, Isolation Forest</li>
-                <li><strong>Data Engineering &amp; Backend:</strong> Python, SQL, FastAPI, PostgreSQL (Neon), SQLAlchemy, Pandas, NumPy, Great Expectations, Docker, CI/CD (GitHub Actions)</li>
-                <li><strong>Visualization &amp; Tools:</strong> Streamlit, Tableau, Power BI, Seaborn, Matplotlib, MLflow, SHAP, A/B Testing, Azure, Render</li>
-            </ul>
-        `,
-        contact: `
-            You can reach G. Bhanu Prakash directly via:
-            <ul>
-                <li>📧 Email: <a href="mailto:gaddebhanu333@gmail.com">gaddebhanu333@gmail.com</a></li>
-                <li>📞 Phone/WhatsApp: <a href="tel:+917396652709">+91 7396652709</a></li>
-                <li>💼 LinkedIn: <a href="https://www.linkedin.com/in/gadde-bhanu-prakash-26aa74389" target="_blank">gadde-bhanu-prakash-26aa74389</a></li>
-                <li>🐙 GitHub: <a href="https://github.com/GaddeBhanu9" target="_blank">GaddeBhanu9</a></li>
-            </ul>
-            He is based in Andhra Pradesh, India.
-        `,
-        education: `
-            Bhanu is pursuing:
-            <ul>
-                <li><strong>B.Tech in CSE (Artificial Intelligence)</strong> — PBR Visvodaya Institute of Technology and Science (Nov 2022 – May 2026). CGPA: <strong>8.0 / 10.0</strong>.</li>
-                <li><strong>Advanced Certification in Data Science with AI</strong> — IIT Jammu (2026 – Present).</li>
-            </ul>
-        `,
-        resume: `
-            You can download his official profile summary here:
-            <br><br>
-            📄 <a href="Gadde_Bhanu_Prakash_Resume.pdf" download class="btn btn-outline btn-sm" style="display:inline-flex; margin-top:5px;">
-                <i data-lucide="download" style="width:14px;height:14px;"></i> Download Resume
-            </a>
-        `,
-        greeting: `
-            Hello! 👋 I can tell you about Bhanu's projects (<strong>OmniRAG</strong>, <strong>SynergyOS</strong>, <strong>VIGIL</strong>, <strong>Churn Predictor</strong>),
-            his work experience, skills, research publication, education, or how to contact him. What would you like to explore?
-        `,
-        default: `
-            I'm a simulated agent, but I can help you with specific information! Try keywords like:
-            <strong>"OmniRAG"</strong>, <strong>"VIGIL"</strong>, <strong>"SynergyOS"</strong>, <strong>"churn"</strong>,
-            <strong>"experience"</strong>, <strong>"skills"</strong>, <strong>"research paper"</strong>,
-            <strong>"education"</strong>, <strong>"resume"</strong>, or <strong>"contact"</strong>.
-        `
+    const KB = {
+        omnirag: `<strong>OmniRAG: Multi-Agent Hybrid Research Assistant</strong>
+            <ul><li>Self-correcting LangGraph pipeline with a Critique Agent that iteratively refines answers.</li>
+            <li>Hybrid retrieval: dense (Gemini) + sparse (BM25 / FastEmbed) fused with Reciprocal Rank Fusion and BGE cross-encoder reranking, on Qdrant.</li>
+            <li>Deployed on Streamlit Cloud with GitHub Actions CI/CD.</li></ul>
+            <a href="https://github.com/GaddeBhanu9/OMNIRAG_AGENTIC_AI" target="_blank">GitHub</a> · <a href="https://omniragai.streamlit.app/" target="_blank">Live demo</a>`,
+        vigil: `<strong>VIGIL: Autonomous AI Data Quality &amp; Observability Platform</strong> (Jun 2026)
+            <ul><li>Isolation Forest + PyTorch Autoencoders detect anomalies; LangChain + Gemini generate corrective SQL.</li>
+            <li>KS-Test and Chi-Squared drift detection plus 5 Great Expectations rules feed a Data Trust Score (0-100%).</li>
+            <li>A safety-critic agent blocks destructive SQL (DELETE, DROP).</li></ul>
+            <a href="https://github.com/GaddeBhanu9/vigil" target="_blank">GitHub</a> · <a href="https://vigildataengine.streamlit.app/" target="_blank">Live demo</a>`,
+        synergyos: `<strong>SynergyOS: Cognitive Supply Chain Twin</strong> (May 2026)
+            <ul><li>Hybrid Prophet + LightGBM forecasting with real-time weather APIs across 5+ warehouses for 4-week inventory planning.</li>
+            <li>Multi-objective Google OR-Tools (Linear Programming) solver minimizing holding, stockout and transfer costs.</li>
+            <li>GenAI Co-Pilot (LangChain + Mistral 7B) turns optimization results into plain-language alerts.</li></ul>
+            <a href="https://github.com/GaddeBhanu9/SynergyOS" target="_blank">GitHub</a> · <a href="https://synergyos-supply-chain.streamlit.app/" target="_blank">Live demo</a>`,
+        churn: `<strong>Bank Customer Churn Predictor:</strong> XGBoost on 50,000+ records with SMOTE for class imbalance (0.89 AUC-ROC) and SHAP for explainability.
+            <br><a href="https://github.com/GaddeBhanu9/Bank-Churn-Predictor" target="_blank">GitHub</a> · <a href="https://bankcustomerchurnpredictapi.streamlit.app/" target="_blank">Live demo</a>`,
+        research: `Bhanu co-authored <strong>"Deep Learning – Driven Visual Search and Image Recommendation"</strong> in IJMTST (Vol. 12, Issue 04, pp. 190-197, April 2026, UGC ID 43137).
+            <br><br>It uses a pre-trained EfficientNetB4 CNN (1,792-dim features) with cosine similarity and a Flask interface. On about 1,000 images in 10 categories it reached roughly 91% precision, 88% recall, 93% Top-5 accuracy and 0.42 s per query.
+            <br><br>📄 <a href="030IJMTST1204030.pdf" target="_blank">Read the paper</a> · <a href="https://doi.org/10.5281/zenodo.19324579" target="_blank">DOI</a> · <a href="https://github.com/GaddeBhanu9/Deep-Learning---Driven-Visual-Search-Based-Image-Recommendation" target="_blank">Code</a>`,
+        experience: `Bhanu has two internships:
+            <ul><li><strong>Data Science Intern, ExcelR Pvt Ltd</strong> (Jun 2026 – Present): hourly energy demand forecasting on 16 years of PJM data (143K+ records). Benchmarked LightGBM, XGBoost, Prophet, PatchTST and Chronos, reaching <strong>1.00% SMAPE</strong>; a LightGBM + XGBoost ensemble gave 1.0012% SMAPE and 77 MW RMSE. Deployed a Streamlit dashboard.</li>
+            <li><strong>Data Analyst Intern, Mphasis</strong> (Oct 2024 – Mar 2026): Standard Chartered Bank Capital Markets project. Denodo base/derived views, Tableau dashboards and alerts, data reconciliation testing, root cause analysis, UAT and SIT.</li></ul>`,
+        skills: `<ul>
+            <li><strong>Generative AI &amp; LLMs:</strong> LangChain, LangGraph, Hugging Face, Gemini, Mistral 7B, Ollama, RAG, Hybrid Search, RRF, Cross-Encoder Reranking, Multi-Agent Systems, Text-to-SQL</li>
+            <li><strong>ML &amp; Forecasting:</strong> LightGBM, XGBoost, Prophet, PatchTST, Chronos, PyTorch, Scikit-learn, Optuna, Isolation Forest, Autoencoders</li>
+            <li><strong>Deep Learning &amp; Optimization:</strong> TensorFlow, Keras, EfficientNetB4, OpenCV, Google OR-Tools</li>
+            <li><strong>Data &amp; Databases:</strong> Python, SQL, JavaScript, PostgreSQL, MySQL, Qdrant, Pandas, NumPy, Denodo, Great Expectations</li>
+            <li><strong>BI &amp; DevOps:</strong> Tableau, Plotly, Streamlit, Excel, Docker, Git, GitHub, CI/CD, Render</li>
+            <li><strong>Methodologies:</strong> SDLC, Agile, Code Reviews, UAT, SIT, Root Cause Analysis</li></ul>`,
+        education: `<ul><li><strong>B.Tech in Computer Science (Artificial Intelligence)</strong>, PBR Visvodaya Institute of Technology and Science (Sep 2022 – Apr 2026), CGPA 8.0 / 10.0.</li>
+            <li><strong>Data Science with AI</strong>, a course in collaboration with IIT Jammu (Jun 2026).</li></ul>`,
+        certifications: `<ul><li><strong>IBM AI + Sustainability Certificate</strong> (IBM SkillsBuild): Agentic AI and RAG architectures.</li>
+            <li><strong>Top 8, Megathon</strong> (IIIT Hyderabad).</li>
+            <li><strong>Data Science with AI</strong> course with IIT Jammu (Jun 2026).</li>
+            <li><strong>Published author</strong> in IJMTST (Apr 2026).</li></ul>`,
+        contact: `<ul><li>📧 <a href="mailto:gaddebhanu111@gmail.com">gaddebhanu111@gmail.com</a></li>
+            <li>📞 <a href="tel:+917396652709">+91 7396652709</a></li>
+            <li>💼 <a href="https://www.linkedin.com/in/gadde-bhanu-prakash-26aa74389" target="_blank">LinkedIn</a></li>
+            <li>🐙 <a href="https://github.com/GaddeBhanu9" target="_blank">GitHub</a></li></ul>Based in Bengaluru, Karnataka, India. Open to Data Scientist, Data Analyst and ML Engineer roles.`,
+        resume: `📄 <a href="Gadde_Bhanu_Prakash_Resume.pdf" download>Download Resume (PDF)</a>`,
+        greeting: `Hello! 👋 Ask me about Bhanu's projects (<strong>OmniRAG</strong>, <strong>SynergyOS</strong>, <strong>VIGIL</strong>, <strong>Churn Predictor</strong>), experience, skills, research, education or contact details.`,
+        fallback: `I can answer questions on: <strong>OmniRAG</strong>, <strong>VIGIL</strong>, <strong>SynergyOS</strong>, <strong>churn</strong>, <strong>experience</strong>, <strong>skills</strong>, <strong>research paper</strong>, <strong>education</strong>, <strong>certifications</strong>, <strong>resume</strong> or <strong>contact</strong>.`
     };
 
-    function scrollToBottom() {
-        chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+    const rules = [
+        ['omnirag', ['omnirag', 'omni rag', 'multi-agent', 'multi agent', 'research assistant']],
+        ['vigil', ['vigil', 'data quality', 'observability', 'anomaly', 'data trust']],
+        ['synergyos', ['synergyos', 'supply chain', 'twin']],
+        ['churn', ['churn', 'bank customer']],
+        ['research', ['paper', 'research', 'publication', 'visual search', 'ijmtst']],
+        ['experience', ['experience', 'internship', 'intern', 'excelr', 'mphasis', 'standard chartered', 'work']],
+        ['skills', ['skill', 'tech', 'language', 'stack']],
+        ['certifications', ['certif', 'achievement', 'megathon', 'ibm', 'award']],
+        ['education', ['education', 'college', 'b.tech', 'university', 'iit', 'degree', 'cgpa']],
+        ['contact', ['contact', 'hire', 'email', 'phone', 'whatsapp', 'linkedin', 'github', 'reach']],
+        ['resume', ['resume', 'cv', 'download']]
+    ];
+
+    const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const bottom = () => { msgBox.scrollTop = msgBox.scrollHeight; };
+
+    function addMessage(sender, html) {
+        const bot = sender === 'bot';
+        const div = document.createElement('div');
+        div.className = 'message ' + (bot ? 'msg-bot' : 'msg-user');
+        div.innerHTML = `<div class="msg-avatar"><i data-lucide="${bot ? 'bot' : 'user'}"></i></div><div class="msg-bubble">${html}</div>`;
+        msgBox.appendChild(div);
+        icons();
+        bottom();
     }
 
-    function appendMessage(sender, text) {
-        const isBot = sender === 'bot';
-        const msgDiv = document.createElement('div');
-        msgDiv.className = `message ${isBot ? 'msg-bot' : 'msg-user'}`;
-        const avatarHTML = isBot
-            ? `<div class="msg-avatar"><i data-lucide="bot"></i></div>`
-            : `<div class="msg-avatar"><i data-lucide="user"></i></div>`;
-        msgDiv.innerHTML = `
-            ${avatarHTML}
-            <div class="msg-bubble">${text}</div>
-        `;
-        chatMessagesContainer.appendChild(msgDiv);
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
-        scrollToBottom();
+    function answer(query) {
+        const q = query.toLowerCase();
+        let key = 'fallback';
+        if (/^(hi|hello|hey)\b/.test(q)) key = 'greeting';
+        for (const [k, words] of rules) { if (words.some(w => q.includes(w))) { key = k; break; } }
+        const typing = document.createElement('div');
+        typing.className = 'message msg-bot typing-indicator';
+        typing.innerHTML = `<div class="msg-avatar"><i data-lucide="bot"></i></div><div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>`;
+        msgBox.appendChild(typing);
+        icons();
+        bottom();
+        setTimeout(() => { typing.remove(); addMessage('bot', KB[key]); }, 900);
     }
 
-    function showTypingIndicator() {
-        const typingDiv = document.createElement('div');
-        typingDiv.className = 'message msg-bot typing-indicator';
-        typingDiv.innerHTML = `
-            <div class="msg-avatar"><i data-lucide="bot"></i></div>
-            <div class="msg-bubble">
-                <div class="typing-dots"><span></span><span></span><span></span></div>
-            </div>
-        `;
-        chatMessagesContainer.appendChild(typDiv = typingDiv);
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
-        scrollToBottom();
-        return typingDiv;
-    }
+    if (chatForm) chatForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const text = chatInput.value.trim();
+        if (!text) return;
+        addMessage('user', esc(text));
+        chatInput.value = '';
+        answer(text);
+    });
+    chips.forEach(chip => chip.addEventListener('click', () => {
+        const q = chip.getAttribute('data-query');
+        addMessage('user', esc(q));
+        answer(q);
+    }));
+    if (clearBtn) clearBtn.addEventListener('click', () => {
+        msgBox.innerHTML = `<div class="message msg-bot"><div class="msg-avatar"><i data-lucide="bot"></i></div><div class="msg-bubble">Chat cleared. 👋 Ask me about Bhanu's projects, experience, skills, research or contact details.</div></div>`;
+        icons();
+    });
 
-    function processQuery(query) {
-        const cleaned = query.toLowerCase();
-        let response = '';
-
-        if (cleaned.includes('omnirag') || cleaned.includes('omni rag') || cleaned.includes('multi-agent') || cleaned.includes('multi agent') || cleaned.includes('research assistant')) {
-            response = knowledgeBase.omnirag;
-        } else if (cleaned.includes('vigil') || cleaned.includes('data quality') || cleaned.includes('observability') || cleaned.includes('anomaly') || cleaned.includes('data trust')) {
-            response = knowledgeBase.vigil;
-        } else if (cleaned.includes('synergyos') || cleaned.includes('supply chain') || cleaned.includes('twin')) {
-            response = knowledgeBase.synergyos;
-        } else if (cleaned.includes('churn') || cleaned.includes('bank') || cleaned.includes('customer')) {
-            response = knowledgeBase.churn;
-        } else if (cleaned.includes('paper') || cleaned.includes('research') || cleaned.includes('publication') || cleaned.includes('visual search')) {
-            response = knowledgeBase.research;
-        } else if (cleaned.includes('experience') || cleaned.includes('internship') || cleaned.includes('intern') || cleaned.includes('fellow') || cleaned.includes('ibm') || cleaned.includes('website makers')) {
-            response = knowledgeBase.experience;
-        } else if (cleaned.includes('skill') || cleaned.includes('tech') || cleaned.includes('languages') || cleaned.includes('stack')) {
-            response = knowledgeBase.skills;
-        } else if (cleaned.includes('education') || cleaned.includes('college') || cleaned.includes('b.tech') || cleaned.includes('university') || cleaned.includes('iit') || cleaned.includes('degree')) {
-            response = knowledgeBase.education;
-        } else if (cleaned.includes('contact') || cleaned.includes('hire') || cleaned.includes('email') || cleaned.includes('phone') || cleaned.includes('whatsapp') || cleaned.includes('linkedin')) {
-            response = knowledgeBase.contact;
-        } else if (cleaned.includes('resume') || cleaned.includes('cv') || cleaned.includes('download')) {
-            response = knowledgeBase.resume;
-        } else if (/^(hi|hello|hey)\b/.test(cleaned)) {
-            response = knowledgeBase.greeting;
-        } else {
-            response = knowledgeBase.default;
-        }
-
-        const typingIndicator = showTypingIndicator();
-        setTimeout(() => {
-            typingIndicator.remove();
-            appendMessage('bot', response);
-        }, 1200);
-    }
-
-    if (chatForm) {
-        chatForm.addEventListener('submit', (e) => {
+    // ===== Contact form (mailto fallback until a Formspree URL is set) =====
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status-msg');
+    if (form) form.addEventListener('submit', e => {
+        const v = id => document.getElementById(id).value.trim();
+        const name = v('form-name'), email = v('form-email'), subject = v('form-subject'), message = v('form-message');
+        if (!name || !email || !subject || !message) {
             e.preventDefault();
-            const text = chatInput.value.trim();
-            if (!text) return;
-            appendMessage('user', text);
-            chatInput.value = '';
-            processQuery(text);
-        });
-    }
+            status.className = 'form-status-msg form-status-error';
+            status.innerText = '⚠️ Please fill out all required fields.';
+            return;
+        }
+        if (form.getAttribute('action').includes('placeholder')) {
+            e.preventDefault();
+            const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+            window.location.href = `mailto:gaddebhanu111@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            status.className = 'form-status-msg form-status-success';
+            status.innerText = 'Opening your email app to send the message...';
+        }
+    });
 
-    if (chatChips.length > 0) {
-        chatChips.forEach(chip => {
-            chip.addEventListener('click', () => {
-                const query = chip.getAttribute('data-query');
-                appendMessage('user', query);
-                processQuery(query);
-            });
-        });
-    }
-
-    if (clearChatBtn) {
-        clearChatBtn.addEventListener('click', () => {
-            chatMessagesContainer.innerHTML = `
-                <div class="message msg-bot">
-                    <div class="msg-avatar"><i data-lucide="bot"></i></div>
-                    <div class="msg-bubble">
-                        Chat cleared. 👋 I am Bhanu's AI Co-Pilot twin. Ask me about his projects, work experience, education, skills, or research publications!
-                    </div>
-                </div>
-            `;
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-        });
-    }
-
-    // ==========================================================================
-    // CONTACT FORM CLIENT-SIDE INTERCEPTOR
-    // ==========================================================================
-    const contactForm = document.getElementById('contact-form');
-    const formSubmitBtn = document.getElementById('form-submit-btn');
-    const formStatusMsg = document.getElementById('form-status-msg');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            const name = document.getElementById('form-name').value.trim();
-            const email = document.getElementById('form-email').value.trim();
-            const subject = document.getElementById('form-subject').value.trim();
-            const message = document.getElementById('form-message').value.trim();
-
-            if (!name || !email || !subject || !message) {
-                e.preventDefault();
-                formStatusMsg.className = 'form-status-msg form-status-error';
-                formStatusMsg.innerText = '⚠️ Please fill out all required fields.';
-                return;
-            }
-
-            if (contactForm.getAttribute('action').includes('placeholder')) {
-                e.preventDefault();
-                formSubmitBtn.disabled = true;
-                formSubmitBtn.innerHTML = `Sending... <i data-lucide="loader" class="animate-spin"></i>`;
-                if (typeof lucide !== 'undefined') lucide.createIcons();
-                setTimeout(() => {
-                    formSubmitBtn.disabled = false;
-                    formSubmitBtn.innerHTML = `Send Message <i data-lucide="send"></i>`;
-                    formStatusMsg.className = 'form-status-msg form-status-success';
-                    formStatusMsg.innerHTML = '✨ Message sent successfully! (Simulation Mode: Please change the form action in index.html to your own Formspree endpoint to receive emails.)';
-                    contactForm.reset();
-                    if (typeof lucide !== 'undefined') lucide.createIcons();
-                }, 1500);
-            }
-        });
-    }
-
-    // ==========================================================================
-    // 3D TILT EFFECT ON GLASS CARDS
-    // ==========================================================================
-    const tiltCards = document.querySelectorAll('.glass-card, .profile-card-wrapper');
-    tiltCards.forEach(card => {
+    // ===== 3D tilt on glass cards =====
+    document.querySelectorAll('.glass-card, .profile-card-wrapper').forEach(card => {
         const shine = document.createElement('div');
         shine.className = 'card-shine';
         card.appendChild(shine);
-
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = ((centerY - y) / centerY) * 10;
-            const rotateY = ((x - centerX) / centerX) * 10;
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+        card.addEventListener('mousemove', e => {
+            const r = card.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+            card.style.setProperty('--mouse-x', x + 'px');
+            card.style.setProperty('--mouse-y', y + 'px');
+            const rx = ((r.height / 2 - y) / (r.height / 2)) * 10, ry = ((x - r.width / 2) / (r.width / 2)) * 10;
+            card.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(10px)`;
         });
         card.addEventListener('mouseleave', () => {
-            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)`;
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
         });
     });
 
-    // ==========================================================================
-    // HERO INTERACTIVE 3D GLOBE / MESH ANIMATION (CANVAS-BASED)
-    // ==========================================================================
+    // ===== Hero 3D mesh globe (canvas) =====
     const canvas = document.getElementById('hero-3d-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
-        let width = canvas.width = canvas.offsetWidth;
-        let height = canvas.height = canvas.offsetHeight;
-
+        let W = canvas.width = canvas.offsetWidth, H = canvas.height = canvas.offsetHeight;
         window.addEventListener('resize', () => {
-            if (canvas.offsetWidth > 0 && canvas.offsetHeight > 0) {
-                width = canvas.width = canvas.offsetWidth;
-                height = canvas.height = canvas.offsetHeight;
-            }
+            if (canvas.offsetWidth > 0 && canvas.offsetHeight > 0) { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
         });
-
-        const numPoints = 80;
-        const points = [];
-        const radius = 130;
-        for (let i = 0; i < numPoints; i++) {
-            const theta = Math.acos(1 - 2 * (i + 0.5) / numPoints);
-            const phi = Math.PI * (1 + Math.sqrt(5)) * (i + 0.5);
-            points.push({
-                x: radius * Math.sin(theta) * Math.cos(phi),
-                y: radius * Math.sin(theta) * Math.sin(phi),
-                z: radius * Math.cos(theta)
-            });
+        const N = 80, R = 130, pts = [];
+        for (let i = 0; i < N; i++) {
+            const th = Math.acos(1 - 2 * (i + 0.5) / N), ph = Math.PI * (1 + Math.sqrt(5)) * (i + 0.5);
+            pts.push({ x: R * Math.sin(th) * Math.cos(ph), y: R * Math.sin(th) * Math.sin(ph), z: R * Math.cos(th) });
         }
-
-        let angleX = 0.003;
-        let angleY = 0.005;
-        window.addEventListener('mousemove', (e) => {
-            const heroSec = document.getElementById('hero');
-            if (!heroSec) return;
-            const rect = heroSec.getBoundingClientRect();
-            if (e.clientY >= rect.top && e.clientY <= rect.bottom) {
-                const cX = rect.left + rect.width / 2;
-                const cY = rect.top + rect.height / 2;
-                angleY = (e.clientX - cX) * 0.00003;
-                angleX = (e.clientY - cY) * 0.00003;
+        let ax = 0.003, ay = 0.005;
+        window.addEventListener('mousemove', e => {
+            const hero = document.getElementById('hero');
+            if (!hero) return;
+            const r = hero.getBoundingClientRect();
+            if (e.clientY >= r.top && e.clientY <= r.bottom) {
+                ay = (e.clientX - (r.left + r.width / 2)) * 0.00003;
+                ax = (e.clientY - (r.top + r.height / 2)) * 0.00003;
             }
         });
-
-        function animate3D() {
-            ctx.clearRect(0, 0, width, height);
-            const cosX = Math.cos(angleX), sinX = Math.sin(angleX);
-            const cosY = Math.cos(angleY), sinY = Math.sin(angleY);
-            const cx = width / 2, cy = height / 2;
-            const projected = [];
-
-            points.forEach(p => {
-                let x1 = p.x * cosY - p.z * sinY;
-                let z1 = p.z * cosY + p.x * sinY;
-                let y2 = p.y * cosX - z1 * sinX;
-                let z2 = z1 * cosX + p.y * sinX;
+        const loop = () => {
+            ctx.clearRect(0, 0, W, H);
+            const cX = Math.cos(ax), sX = Math.sin(ax), cY = Math.cos(ay), sY = Math.sin(ay), cx = W / 2, cy = H / 2;
+            const proj = pts.map(p => {
+                const x1 = p.x * cY - p.z * sY, z1 = p.z * cY + p.x * sY;
+                const y2 = p.y * cX - z1 * sX, z2 = z1 * cX + p.y * sX;
                 p.x = x1; p.y = y2; p.z = z2;
-                const perspective = 300;
-                const scale = perspective / (perspective + z2);
-                projected.push({
-                    sx: cx + x1 * scale,
-                    sy: cy + y2 * scale,
-                    sz: z2,
-                    scale: scale
-                });
+                const s = 300 / (300 + z2);
+                return { sx: cx + x1 * s, sy: cy + y2 * s, sz: z2, s };
             });
-
             ctx.lineWidth = 0.6;
-            for (let i = 0; i < projected.length; i++) {
-                const p1 = projected[i];
-                if (p1.sz > 80) continue;
-                for (let j = i + 1; j < projected.length; j++) {
-                    const p2 = projected[j];
-                    if (p2.sz > 80) continue;
-                    const dx = p1.sx - p2.sx;
-                    const dy = p1.sy - p2.sy;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 65) {
-                        const alpha = (1 - dist / 65) * 0.15;
-                        ctx.strokeStyle = `rgba(0, 210, 255, ${alpha})`;
-                        ctx.beginPath();
-                        ctx.moveTo(p1.sx, p1.sy);
-                        ctx.lineTo(p2.sx, p2.sy);
-                        ctx.stroke();
+            for (let i = 0; i < proj.length; i++) {
+                if (proj[i].sz > 80) continue;
+                for (let j = i + 1; j < proj.length; j++) {
+                    if (proj[j].sz > 80) continue;
+                    const d = Math.hypot(proj[i].sx - proj[j].sx, proj[i].sy - proj[j].sy);
+                    if (d < 65) {
+                        ctx.strokeStyle = `rgba(0, 210, 255, ${(1 - d / 65) * 0.15})`;
+                        ctx.beginPath(); ctx.moveTo(proj[i].sx, proj[i].sy); ctx.lineTo(proj[j].sx, proj[j].sy); ctx.stroke();
                     }
                 }
             }
-
-            projected.forEach(p => {
-                const size = Math.max(1, 2.5 * p.scale);
-                let color;
-                if (p.sz > 0) {
-                    color = `rgba(160, 68, 255, ${0.45 * (1 - p.sz / radius)})`;
-                } else {
-                    color = `rgba(0, 210, 255, ${0.45 + 0.35 * (-p.sz / radius)})`;
-                }
-                ctx.fillStyle = color;
-                ctx.beginPath();
-                ctx.arc(p.sx, p.sy, size, 0, Math.PI * 2);
-                ctx.fill();
-                if (p.sz < -80) {
-                    ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-                    ctx.beginPath();
-                    ctx.arc(p.sx, p.sy, size * 0.5, 0, Math.PI * 2);
-                    ctx.fill();
-                }
+            proj.forEach(p => {
+                const size = Math.max(1, 2.5 * p.s);
+                ctx.fillStyle = p.sz > 0 ? `rgba(160, 68, 255, ${0.45 * (1 - p.sz / R)})` : `rgba(0, 210, 255, ${0.45 + 0.35 * (-p.sz / R)})`;
+                ctx.beginPath(); ctx.arc(p.sx, p.sy, size, 0, Math.PI * 2); ctx.fill();
+                if (p.sz < -80) { ctx.fillStyle = 'rgba(255, 255, 255, 0.8)'; ctx.beginPath(); ctx.arc(p.sx, p.sy, size * 0.5, 0, Math.PI * 2); ctx.fill(); }
             });
-            requestAnimationFrame(animate3D);
-        }
-        animate3D();
+            requestAnimationFrame(loop);
+        };
+        loop();
     }
 
-    // ==========================================================================
-    // CUSTOM CURSOR ACTION FOLLOW LOGIC
-    // ==========================================================================
-    const cursorDot = document.getElementById('cursor-dot');
-    const cursorRing = document.getElementById('cursor-ring');
-    if (cursorDot && cursorRing) {
-        let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
-        window.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            cursorDot.style.left = `${mouseX}px`;
-            cursorDot.style.top = `${mouseY}px`;
+    // ===== Custom cursor (only visible if enabled in style.css) =====
+    const dot = document.getElementById('cursor-dot'), ring = document.getElementById('cursor-ring');
+    if (dot && ring) {
+        let mx = 0, my = 0, rx = 0, ry = 0;
+        window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx + 'px'; dot.style.top = my + 'px'; });
+        const follow = () => { rx += (mx - rx) * 0.15; ry += (my - ry) * 0.15; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(follow); };
+        follow();
+        document.body.addEventListener('mouseover', e => {
+            const hit = e.target.closest('a, button, select, input, textarea, .chat-chip, .scroll-down-indicator, .logo-link');
+            dot.classList.toggle('active-hover', !!hit);
+            ring.classList.toggle('active-hover', !!hit);
         });
-        function updateRingPosition() {
-            ringX += (mouseX - ringX) * 0.15;
-            ringY += (mouseY - ringY) * 0.15;
-            cursorRing.style.left = `${ringX}px`;
-            cursorRing.style.top = `${ringY}px`;
-            requestAnimationFrame(updateRingPosition);
-        }
-        updateRingPosition();
-        document.body.addEventListener('mouseover', (e) => {
-            const target = e.target.closest('a, button, select, input, textarea, .chat-chip, .scroll-down-indicator, .logo-link');
-            if (target) {
-                cursorDot.classList.add('active-hover');
-                cursorRing.classList.add('active-hover');
-            } else {
-                cursorDot.classList.remove('active-hover');
-                cursorRing.classList.remove('active-hover');
-            }
-        });
-        document.addEventListener('mouseleave', () => {
-            cursorDot.style.opacity = '0';
-            cursorRing.style.opacity = '0';
-        });
-        document.addEventListener('mouseenter', () => {
-            cursorDot.style.opacity = '1';
-            cursorRing.style.opacity = '1';
-        });
+        document.addEventListener('mouseleave', () => { dot.style.opacity = '0'; ring.style.opacity = '0'; });
+        document.addEventListener('mouseenter', () => { dot.style.opacity = '1'; ring.style.opacity = '1'; });
     }
 });
