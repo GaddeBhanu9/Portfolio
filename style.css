@@ -589,3 +589,9 @@ section[id] { scroll-margin-top: 84px; }
     .custom-cursor-ring { position: fixed; top: 0; left: 0; width: 36px; height: 36px; border: 1.5px solid var(--color-primary); border-radius: 50%; z-index: 9999; pointer-events: none; transform: translate(-50%, -50%); }
     */
 }
+.timeline-project { color: var(--text-primary); font-size: 0.95rem; margin: 0.8rem 0 0.4rem; }
+.timeline-desc { color: var(--text-secondary); font-size: 0.93rem; margin-bottom: 0.6rem; }
+.research-metrics { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.6rem; }
+.metric-chip { background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.15); color: var(--text-secondary); padding: 0.35rem 0.9rem; border-radius: 50px; font-size: 0.82rem; }
+.metric-chip strong { color: var(--color-purple); }
+.skills-grid .skill-category-card .skill-tags { margin-top: 1.2rem; }
