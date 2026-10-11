@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <br><a href="https://github.com/GaddeBhanu9/Bank-Churn-Predictor" target="_blank">GitHub</a> · <a href="https://bankcustomerchurnpredictapi.streamlit.app/" target="_blank">Live demo</a>`,
         research: `Bhanu co-authored <strong>"Deep Learning – Driven Visual Search and Image Recommendation"</strong> in IJMTST (Vol. 12, Issue 04, pp. 190-197, April 2026, UGC ID 43137).
             <br><br>It uses a pre-trained EfficientNetB4 CNN (1,792-dim features) with cosine similarity and a Flask interface. On about 1,000 images in 10 categories it reached roughly 91% precision, 88% recall, 93% Top-5 accuracy and 0.42 s per query.
-            <br><br>📄 <a href="030IJMTST1204030 (1).pdf" target="_blank">Read the paper</a> · <a href="https://doi.org/10.5281/zenodo.19324579" target="_blank">DOI</a> · <a href="https://github.com/GaddeBhanu9/Deep-Learning---Driven-Visual-Search-Based-Image-Recommendation" target="_blank">Code</a>`,
+            <br><br>📄 <a href="030IJMTST1204030 (1).pdf" target="_blank">Read the paper (030IJMTST1204030 (1).pdf)</a> · <a href="https://doi.org/10.5281/zenodo.19324579" target="_blank">DOI</a> · <a href="https://github.com/GaddeBhanu9/Deep-Learning---Driven-Visual-Search-Based-Image-Recommendation" target="_blank">Code</a>`,
         experience: `Bhanu has two internships:
             <ul><li><strong>Data Science Intern, ExcelR Pvt Ltd</strong> (Jun 2026 – Present): hourly energy demand forecasting on 16 years of PJM data (143K+ records). Benchmarked LightGBM, XGBoost, Prophet, PatchTST and Chronos, reaching <strong>1.00% SMAPE</strong>; a LightGBM + XGBoost ensemble gave 1.0012% SMAPE and 77 MW RMSE. Deployed a Streamlit dashboard.</li>
             <li><strong>Data Analyst Intern, Mphasis</strong> (Oct 2024 – Mar 2026): Standard Chartered Bank Capital Markets project. Denodo base/derived views, Tableau dashboards and alerts, data reconciliation testing, root cause analysis, UAT and SIT.</li></ul>`,
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ['vigil', ['vigil', 'data quality', 'observability', 'anomaly', 'data trust']],
         ['synergyos', ['synergyos', 'supply chain', 'twin']],
         ['churn', ['churn', 'bank customer']],
-        ['research', ['paper', 'research', 'publication', 'visual search', 'ijmtst']],
+        ['research', ['paper', 'research', 'publication', 'visual search', 'ijmtst', '030ijmtst1204030']],
         ['experience', ['experience', 'internship', 'intern', 'excelr', 'mphasis', 'standard chartered', 'work']],
         ['skills', ['skill', 'tech', 'language', 'stack']],
         ['certifications', ['certif', 'achievement', 'megathon', 'ibm', 'award']],
